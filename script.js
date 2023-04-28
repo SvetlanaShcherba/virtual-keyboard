@@ -65,4 +65,38 @@ const KEYS = [
     { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", type: "controlKeys" }
 ];
 
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} 
+
+function createDom () {
+    document.body.insertAdjacentHTML('afterbegin', `<div class="keyboard-container">
+                                                        <h1 class="keyboard-container__title">RSS Virtual Keyboard</h1>
+                                                        <textarea autofocus class="keyboard-container__text"></textarea>
+                                                        <div class="keyboard-container__keyboard" id="keyboard"></div>
+                                                        <p class="keyboard-container__description">Клавиатура создана в операционной системе Windows</p>
+                                                        <p class="keyboard-container__description">Для переключения языка необхоимо нажать: левые shift + alt</p>                      
+                                                    </div>`);
+
+    const KEYBOARD = document.querySelector('#keyboard');
+
+    for (let i = 0; i < KEYS.length; i ++) {
+      KEYBOARD.insertAdjacentHTML('beforeend', `<div class="key ${KEYS[i].type}">
+                                                    <span class="ru ${localStorage.getItem('lang') === 'en' ? 'hidden' : ''}">
+                                                        <span class="keylowerCase">${KEYS[i].keyRu}</span>
+                                                        <span class="capsLock hidden">${KEYS[i].keyRuCaps}</span>
+                                                        <span class="shift hidden">${KEYS[i].keyRuShift}</span>                                                            
+                                                        <span class="shift-capsLock hidden">${KEYS[i].keyRu}</span>
+                                                    </span>
+                                                    <span class="en ${localStorage.getItem('lang') === 'ru' ? 'hidden' : ''}
+                                                        <span class="keylowerCase">${KEYS[i].keyEn}</span>
+                                                        <span class="capsLock hidden">${KEYS[i].keyEnCaps}</span>
+                                                        <span class="shift hidden">${KEYS[i].keyEnShift}</span>                                                            
+                                                        <span class="shift-capsLock hidden">${KEYS[i].keyEn}</span>
+                                                    </span>
+                                                </div>`);
+    }
+  };
+  createDom();
+
 
