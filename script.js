@@ -13,7 +13,7 @@ const KEYS = [
     { code: "Minus", keyRu: "-", keyRuCaps: "-", keyRuShift: "_", keyEn: "-", keyEnCaps: "-", keyEnShift: "_" , type: "typinKeys"},
     { code: "Equal", keyRu: "=", keyRuCaps: "=", keyRuShift: "+", keyEn: "=", keyEnCaps: "=", keyEnShift: "+", type: "typinKeys" },
     { code: "Backspace", keyRu: "Backspace", keyRuCaps: "Backspace", keyRuShift: "Backspace", keyEn: "Backspace", keyEnCaps: "Backspace", keyEnShift: "Backspace", type: "backspaceKeys" },
-    { code: "Tab", keyRu: "Tab", keyRuCaps: "Tab", keyRuShift: "Tab", keyEn: "Tab", keyEnCaps: "Tab", keyEnShift: "Tab", type: "navigationKeys" },
+    { code: "Tab", keyRu: "Tab", keyRuCaps: "Tab", keyRuShift: "Tab", keyEn: "Tab", keyEnCaps: "Tab", keyEnShift: "Tab", type: "tabKey" },
     { code: "KeyQ", keyRu: "й", keyRuCaps: "Й", keyRuShift: "Й", keyEn: "q", keyEnCaps: "Q", keyEnShift: "Q", type: "typinKeys" },
     { code: "KeyW", keyRu: "ц", keyRuCaps: "Ц", keyRuShift: "Ц", keyEn: "w", keyEnCaps: "W", keyEnShift: "W", type: "typinKeys" },
     { code: "KeyE", keyRu: "у", keyRuCaps: "У", keyRuShift: "У", keyEn: "e", keyEnCaps: "E", keyEnShift: "E", type: "typinKeys"},
@@ -27,7 +27,7 @@ const KEYS = [
     { code: "BracketLeft", keyRu: "х", keyRuCaps: "Х", keyRuShift: "Х", keyEn: "[", keyEnCaps: "[", keyEnShift: "{", type: "typinKeys"},
     { code: "BracketRight", keyRu: "ъ", keyRuCaps: "Ъ", keyRuShift: "Ъ", keyEn: "]", keyEnCaps: "[", keyEnShift: "}", type: "typinKeys" },
     { code: "Backslash", keyRu: "\\", keyRuCaps: "\\", keyRuShift: "\/", keyEn: "\\", keyEnCaps: "\\", keyEnShift: "|", type: "typinKeys" },
-    { code: "Delete", keyRu: "Del", keyRuCaps: "Del", keyRuShift: "Del", keyEn: "Del", keyEnCaps: "Del", keyEnShift: "Del", type: "navigationKeys" },
+    { code: "Delete", keyRu: "Del", keyRuCaps: "Del", keyRuShift: "Del", keyEn: "Del", keyEnCaps: "Del", keyEnShift: "Del", type: "delKey" },
     { code: "CapsLock", keyRu: "CapsLock", keyRuCaps: "CapsLock", keyRuShift: "CapsLock", keyEn: "CapsLock", keyEnCaps: "CapsLock", keyEnShift: "CapsLock", type: "capsLockKey" },
     { code: "KeyA", keyRu: "ф", keyRuCaps: "Ф", keyRuShift: "Ф", keyEn: "a", keyEnCaps: "A", keyEnShift: "A", type: "typinKeys" },
     { code: "KeyS", keyRu: "ы", keyRuCaps: "Ы", keyRuShift: "Ы", keyEn: "s", keyEnCaps: "S", keyEnShift: "S", type: "typinKeys" },
@@ -53,7 +53,7 @@ const KEYS = [
     { code: "Period", keyRu: "ю", keyRuCaps: "Ю", keyRuShift: "Ю", keyEn: ".", keyEnCaps: ".", keyEnShift: ">", type: "typinKeys" },
     { code: "Slash", keyRu: ".", keyRuCaps: ".", keyRuShift: ",", keyEn: "/", keyEnCaps: "/", keyEnShift: "?", type: "typinKeys" },
     { code: "ArrowUp", keyRu: "▲", keyRuCaps: "▲", keyRuShift: "▲", keyEn: "▲", keyEnCaps: "▲", keyEnShift: "▲", type: "navigationKeys"},
-    { code: "ShiftRight", keyRu: "Shift", keyRuCaps: "Shift", keyRuShift: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", type: "shiftKey" },
+    { code: "ShiftRight", keyRu: "Shift", keyRuCaps: "Shift", keyRuShift: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", type: "shiftRightKey" },
     { code: "ControlLeft", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", type: "controlKeys" },
     { code: "OSLeft", keyRu: "Win", keyRuCaps: "Win", keyRuShift: "Win", keyEn: "Win", keyEnCaps: "Win", keyEnShift: "Win", type: "controlKeys" },
     { code: "AltLeft", keyRu: "Alt", keyRuCaps: "Alt", keyRuShift: "Alt", keyEn: "Alt", keyEnCaps: "Alt", keyEnShift: "Alt", type: "controlKeys" },
@@ -62,7 +62,7 @@ const KEYS = [
     { code: "ArrowLeft", keyRu: "◄", keyRuCaps: "◄", keyRuShift: "◄", keyEn: "◄", keyEnCaps: "◄", keyEnShift: "◄", type: "navigationKeys" },
     { code: "ArrowDown", keyRu: "▼", keyRuCaps: "▼", keyRuShift: "▼", keyEn: "▼", keyEnCaps: "▼", keyEnShift: "▼", type: "navigationKeys" },
     { code: "ArrowRight", keyRu: "►", keyRuCaps: "►", keyRuShift: "►", keyEn: "►", keyEnCaps: "►", keyEnShift: "►", type: "navigationKeys" },
-    { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", type: "controlKeys" }
+    { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", type: "controlRightKeys" }
 ];
 
 if (!localStorage.getItem('lang')) {
@@ -70,12 +70,12 @@ if (!localStorage.getItem('lang')) {
 } 
 
 function createDom () {
-    document.body.insertAdjacentHTML('afterbegin', `<div class="keyboard-container">
-                                                        <h1 class="keyboard-container__title">RSS Virtual Keyboard</h1>
-                                                        <textarea autofocus class="keyboard-container__text"></textarea>
-                                                        <div class="keyboard-container__keyboard" id="keyboard"></div>
-                                                        <p class="keyboard-container__description">Клавиатура создана в операционной системе Windows</p>
-                                                        <p class="keyboard-container__description">Для переключения языка необхоимо нажать: левые shift + alt</p>                      
+    document.body.insertAdjacentHTML('afterbegin', `<div class="container">
+                                                        <h1 class="container__title">RSS Virtual Keyboard</h1>
+                                                        <textarea autofocus class="container__text"></textarea>
+                                                        <div class="container__keyboard" id="keyboard"></div>
+                                                        <p class="container__description">Клавиатура создана в операционной системе Windows</p>
+                                                        <p class="container__description">Для переключения языка необхоимо нажать: левые shift + alt</p>                      
                                                     </div>`);
 
     const KEYBOARD = document.querySelector('#keyboard');
@@ -88,7 +88,7 @@ function createDom () {
                                                         <span class="shift hidden">${KEYS[i].keyRuShift}</span>                                                            
                                                         <span class="shift-capsLock hidden">${KEYS[i].keyRu}</span>
                                                     </span>
-                                                    <span class="en ${localStorage.getItem('lang') === 'ru' ? 'hidden' : ''}
+                                                    <span class="en hidden">
                                                         <span class="keylowerCase">${KEYS[i].keyEn}</span>
                                                         <span class="capsLock hidden">${KEYS[i].keyEnCaps}</span>
                                                         <span class="shift hidden">${KEYS[i].keyEnShift}</span>                                                            
