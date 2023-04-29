@@ -65,14 +65,13 @@ const KEYS = [
     { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", type: "controlRightKeys" }
 ];
 
-if (!localStorage.getItem('lang')) {
-    localStorage.setItem('lang', 'ru');
+if (!localStorage.getItem('inputLanguages')) {
+    localStorage.setItem('inputLanguages', 'ru');
 } 
-
 function createDom () {
     document.body.insertAdjacentHTML('afterbegin', `<div class="container">
                                                         <h1 class="container__title">RSS Virtual Keyboard</h1>
-                                                        <textarea autofocus class="container__text"></textarea>
+                                                        <textarea autofocus class="container__text" id="text"></textarea>
                                                         <div class="container__keyboard" id="keyboard"></div>
                                                         <p class="container__description">Клавиатура создана в операционной системе Windows</p>
                                                         <p class="container__description">Для переключения языка необхоимо нажать: левые shift + alt</p>                      
@@ -81,14 +80,14 @@ function createDom () {
     const KEYBOARD = document.querySelector('#keyboard');
 
     for (let i = 0; i < KEYS.length; i ++) {
-      KEYBOARD.insertAdjacentHTML('beforeend', `<div class="key ${KEYS[i].type}">
-                                                    <span class="ru ${localStorage.getItem('lang') === 'en' ? 'hidden' : ''}">
+      KEYBOARD.insertAdjacentHTML('beforeend', `<div class="key ${KEYS[i].type}" id="${KEYS[i].code}">
+                                                    <span class="ru ${localStorage.getItem('inputLanguage') === 'en' ? 'hidden' : ''}">
                                                         <span class="keylowerCase">${KEYS[i].keyRu}</span>
                                                         <span class="capsLock hidden">${KEYS[i].keyRuCaps}</span>
                                                         <span class="shift hidden">${KEYS[i].keyRuShift}</span>                                                            
                                                         <span class="shift-capsLock hidden">${KEYS[i].keyRu}</span>
                                                     </span>
-                                                    <span class="en hidden">
+                                                    <span class="en ${localStorage.getItem('inputLanguage') === 'ru' ? 'hidden' : ''}">
                                                         <span class="keylowerCase">${KEYS[i].keyEn}</span>
                                                         <span class="capsLock hidden">${KEYS[i].keyEnCaps}</span>
                                                         <span class="shift hidden">${KEYS[i].keyEnShift}</span>                                                            
@@ -96,7 +95,101 @@ function createDom () {
                                                     </span>
                                                 </div>`);
     }
-  };
-  createDom();
+};
+createDom();
+
+const INPUT_FIELD = document.querySelector('#text');
+const KEYBOARD = document.querySelector('#keyboard');
+const SPAN_lOWER_CASE = document.querySelectorAll('.keylowerCase');
+const SPAN_CAPS = document.querySelectorAll('.capsLock');
+const SPAN_SHIFT = document.querySelectorAll('.shift');
+const SPAN_SHIFT_CAPS = document.querySelectorAll('.shift-capsLock');
+let text="";
+let pressedCapsLock="false";
+let pressedShift="false";
+let linputLanguage=localStorage.getItem('inputLanguage');
+
+KEYBOARD.onclick = function(event) {
+    let target=event.target.closest('div');
+    let pressedKeyObj=KEYS.filter((elem) => elem.code===target.id);
+    let textArr=Array.from(text);
+    let startSelected=INPUT_FIELD.selectionStart;
+    
+    let endSelected=INPUT_FIELD.selectionEnd;
+    if (target.id!=="keyboard") {
+        let pressedKey=pressedKeyObj[0].type;    
+        switch (pressedKey) {
+            case "capsLockKey":
+                if (pressedCapsLock==="false") {
+                    target.classList.add('active');
+                    for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                        SPAN_lOWER_CASE[i].classList.add('hidden');
+                    }
+                    for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                        SPAN_CAPS[i].classList.remove('hidden');
+                    }
+                    pressedCapsLock="true";
+                }
+                else {
+                    target.classList.remove('active');
+                    for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                        SPAN_lOWER_CASE[i].classList.remove('hidden');
+                    }
+                    for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                        SPAN_CAPS[i].classList.add('hidden');
+                    }
+                    pressedCapsLock="false";
+                }
+                break;
+            
+            case "typinKeys":
+            case "navigationKeys":
+                textArr.splice(startSelected, endSelected-startSelected, target.innerText);
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+                break;
+            
+            case "spaceKey":
+                textArr.splice(startSelected, endSelected-startSelected, " ");
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+                break;
+
+            case "tabKey":
+                textArr.splice(startSelected, endSelected-startSelected, "    ");
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+4;
+                INPUT_FIELD.focus();
+                break;
+        
+            case "enterKey":
+                textArr.splice(startSelected, endSelected-startSelected, "\n");
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+                INPUT_FIELD.focus();
+                break;
+            
+            case "delKey":
+                textArr.splice(startSelected, 1);
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected;
+                break;
+
+            case "backspaceKeys":
+                textArr.splice(startSelected-1, 1);
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+                break;
+        }
+
+}
 
 
+    
+  }
