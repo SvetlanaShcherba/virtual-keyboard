@@ -50,6 +50,13 @@
         0 1px 1px rgba(255,255,255,0.1);
 }
 
+.key:hover {
+    box-shadow:
+        0 0 1px rgba(238, 58, 58, 0.5) inset,
+        0 2px 3px rgba(212, 83, 83, 0.5) inset,
+        0 1px 1px rgba(192, 106, 106, 0.1);
+}
+
 .typinKeys,
 .spaceKey {
     background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
