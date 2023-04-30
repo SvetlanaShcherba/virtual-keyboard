@@ -4,7 +4,7 @@ const KEYS = [
     { code: "Digit2", keyRu: "2", keyRuCaps: "2", keyRuShift: "\"", keyRuShiftCaps: "\"",  keyEn: "2", keyEnCaps: "2", keyEnShift: "@", keyEnShiftCaps: "@", type: "typinKeys" },
     { code: "Digit3", keyRu: "3", keyRuCaps: "3", keyRuShift: "№", keyRuShiftCaps: "№", keyEn: "3", keyEnCaps: "3", keyEnShift: "#", keyEnShiftCaps: "#", type: "typinKeys" },
     { code: "Digit4", keyRu: "4", keyRuCaps: "4", keyRuShift: ";", keyRuShiftCaps: ";", keyEn: "4", keyEnCaps: "4", keyEnShift: "$", keyEnShiftCaps: "$", type: "typinKeys" },
-    { code: "Digit5", keyRu: "5", keyRuCaps: "5", keyRuShift: "%", keyRuShiftCaps: "%", keyEn: "5", keyEnCaps: "5", keyEnShift: "", keyEnShiftCaps: "%", type: "typinKeys" },
+    { code: "Digit5", keyRu: "5", keyRuCaps: "5", keyRuShift: "%", keyRuShiftCaps: "%", keyEn: "5", keyEnCaps: "5", keyEnShift: "%", keyEnShiftCaps: "%", type: "typinKeys" },
     { code: "Digit6", keyRu: "6", keyRuCaps: "6", keyRuShift: ":", keyRuShiftCaps: ":", keyEn: "6", keyEnCaps: "6", keyEnShift: "^", keyEnShiftCaps: "^", type: "typinKeys" },
     { code: "Digit7", keyRu: "7", keyRuCaps: "7", keyRuShift: "?", keyRuShiftCaps: "?", keyEn: "7", keyEnCaps: "7", keyEnShift: "&", keyEnShiftCaps: "&", type: "typinKeys" },
     { code: "Digit8", keyRu: "8", keyRuCaps: "8", keyRuShift: "*", keyRuShiftCaps: "*", keyEn: "8", keyEnCaps: "8", keyEnShift: "*", keyEnShiftCaps: "*", type: "typinKeys" },
@@ -65,9 +65,9 @@ const KEYS = [
     { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyRuShiftCaps: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "controlRightKeys" }
 ];
 
-if (!localStorage.getItem('inputLanguages')) {
-    localStorage.setItem('inputLanguages', 'ru');
-} 
+if (!localStorage.getItem('inputLanguage')) {
+    localStorage.setItem('inputLanguage', 'ru');
+}
 function createDom () {
     document.body.insertAdjacentHTML('afterbegin', `<div class="container">
                                                         <h1 class="container__title">RSS Virtual Keyboard</h1>
@@ -81,13 +81,13 @@ function createDom () {
 
     for (let i = 0; i < KEYS.length; i ++) {
       KEYBOARD.insertAdjacentHTML('beforeend', `<div class="key ${KEYS[i].type}" id="${KEYS[i].code}">
-                                                    <span class="ru ${localStorage.getItem('inputLanguage') === 'en' ? 'hidden' : ''}">
+                                                    <span class="ru ${localStorage.getItem('inputLanguage') == 'en' ? 'hidden' : ''}" id="spanRu">
                                                         <span class="keylowerCase">${KEYS[i].keyRu}</span>
                                                         <span class="capsLock hidden">${KEYS[i].keyRuCaps}</span>
                                                         <span class="shift hidden">${KEYS[i].keyRuShift}</span>                                                            
                                                         <span class="shift-capsLock hidden">${KEYS[i].keyRuShiftCaps}</span>
                                                     </span>
-                                                    <span class="en ${localStorage.getItem('inputLanguage') === 'ru' ? 'hidden' : ''}">
+                                                    <span class="en ${localStorage.getItem('inputLanguage') == 'ru' ? 'hidden' : ''}" id="spanEn">
                                                         <span class="keylowerCase">${KEYS[i].keyEn}</span>
                                                         <span class="capsLock hidden">${KEYS[i].keyEnCaps}</span>
                                                         <span class="shift hidden">${KEYS[i].keyEnShift}</span>                                                            
@@ -104,10 +104,11 @@ const SPAN_lOWER_CASE = document.querySelectorAll('.keylowerCase');
 const SPAN_CAPS = document.querySelectorAll('.capsLock');
 const SPAN_SHIFT = document.querySelectorAll('.shift');
 const SPAN_SHIFT_CAPS = document.querySelectorAll('.shift-capsLock');
+const SPAN_RU = document.querySelectorAll('#spanRu');
+const SPAN_EN = document.querySelectorAll('#spanEn');
 let text="";
 let pressedCapsLock="false";
 let pressedShift="false";
-let inputLanguage=localStorage.getItem('inputLanguage');
 
 const SHIFT_LEFT=document.querySelector("#ShiftLeft");
 const SHIFT_RIGHT=document.querySelector("#ShiftRight");
@@ -131,9 +132,46 @@ SHIFT_LEFT.addEventListener("mousedown", () => {
     }
 });
 
-SHIFT_LEFT.addEventListener("mouseup", () => {
+SHIFT_RIGHT.addEventListener("mousedown", () => {
     if (pressedCapsLock==="false") {
-        
+        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+            SPAN_lOWER_CASE[i].classList.add('hidden');
+        }
+        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+            SPAN_SHIFT[i].classList.remove('hidden');
+        }
+    }
+    else {
+        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+            SPAN_SHIFT_CAPS[i].classList.remove('hidden');
+        }
+        for (let i=0; i < SPAN_CAPS.length; i++ ) {
+            SPAN_CAPS[i].classList.add('hidden');
+        }
+    }
+});
+
+SHIFT_LEFT.addEventListener("mouseup", () => {
+    if (pressedCapsLock==="false") {        
+        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+            SPAN_lOWER_CASE[i].classList.remove('hidden');
+        }
+        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+            SPAN_SHIFT[i].classList.add('hidden');
+        }
+    }
+    else {
+        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+            SPAN_SHIFT_CAPS[i].classList.add('hidden');
+        }
+        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+            SPAN_CAPS[i].classList.remove('hidden');
+        }
+    }
+});
+
+SHIFT_RIGHT.addEventListener("mouseup", () => {
+    if (pressedCapsLock==="false") {        
         for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
             SPAN_lOWER_CASE[i].classList.remove('hidden');
         }
@@ -160,7 +198,7 @@ KEYBOARD.addEventListener("click", (event) => {
     let endSelected=INPUT_FIELD.selectionEnd;
 
     if (target.id!=="keyboard") {
-    let pressedKey=pressedKeyObj[0].type;
+        let pressedKey=pressedKeyObj[0].type;
         switch (pressedKey) {
             case "capsLockKey":
                 if (pressedCapsLock==="false") {
@@ -230,9 +268,37 @@ KEYBOARD.addEventListener("click", (event) => {
                 INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
                 break;
         }
+    }
+})
 
-}
-
-
-    
-  })
+document.onkeydown=function (event) {
+    if (event.repeat) {
+        return;
+    }
+    event.preventDefault();
+    if (event.code=="ShiftLeft" || event.code=="ShiftRight") {
+        document.onkeyup=function (event){
+            event.preventDefault();
+            if (event.code=="AltLeft" || event.code=="AltRight") {
+                if (localStorage.getItem("inputLanguage")=="ru") {
+                    localStorage.setItem("inputLanguage", "en");
+                    for (let i=0; i < SPAN_RU.length; i++ ) {
+                        SPAN_RU[i].classList.add('hidden');
+                    }
+                    for (let i=0; i < SPAN_EN.length; i++ ) {
+                        SPAN_EN[i].classList.remove('hidden');
+                    }
+                }
+                else {
+                    localStorage.setItem("inputLanguage", "ru");
+                    for (let i=0; i < SPAN_RU.length; i++ ) {
+                        SPAN_RU[i].classList.remove('hidden');
+                    }
+                    for (let i=0; i < SPAN_EN.length; i++ ) {
+                        SPAN_EN[i].classList.add('hidden');
+                    }
+                }
+            }
+        };
+    }
+};
