@@ -51,10 +51,7 @@
 }
 
 .key:hover {
-    box-shadow:
-        0 0 1px rgba(238, 58, 58, 0.5) inset,
-        0 2px 3px rgba(212, 83, 83, 0.5) inset,
-        0 1px 1px rgba(192, 106, 106, 0.1);
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
 }
 
 .typinKeys,

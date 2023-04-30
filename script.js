@@ -69,7 +69,7 @@ if (!localStorage.getItem('inputLanguage')) {
     localStorage.setItem('inputLanguage', 'ru');
 }
 
-function createDom () {
+let createDom=()=> {
     document.body.insertAdjacentHTML('afterbegin', `<div class="container">
                                                         <h1 class="container__title">RSS Virtual Keyboard</h1>
                                                         <textarea autofocus class="container__text" id="text"></textarea>
@@ -107,6 +107,8 @@ const SPAN_SHIFT = document.querySelectorAll('.shift');
 const SPAN_SHIFT_CAPS = document.querySelectorAll('.shift-capsLock');
 const SPAN_RU = document.querySelectorAll('#spanRu');
 const SPAN_EN = document.querySelectorAll('#spanEn');
+const CTRL_L = document.querySelector('#ControlLeft');
+
 let text="";
 let pressedCapsLock="false";
 let pressedShift="false";
@@ -118,19 +120,19 @@ SHIFT_LEFT.addEventListener("mousedown", (event) => {
     let target=event.target.closest('div');
     target.classList.add('active');
     if (pressedCapsLock==="false") {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_lOWER_CASE[i].classList.add('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.add('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_SHIFT[i].classList.remove('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.remove('hidden');
         }
     }
     else {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_SHIFT_CAPS[i].classList.remove('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.remove('hidden');
         }
-        for (let i=0; i < SPAN_CAPS.length; i++ ) {
-            SPAN_CAPS[i].classList.add('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.add('hidden');
         }
     }
 });
@@ -139,19 +141,19 @@ SHIFT_RIGHT.addEventListener("mousedown", (event) => {
     let target=event.target.closest('div');
     target.classList.add('active');
     if (pressedCapsLock==="false") {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_lOWER_CASE[i].classList.add('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.add('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_SHIFT[i].classList.remove('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.remove('hidden');
         }
     }
     else {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_SHIFT_CAPS[i].classList.remove('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.remove('hidden');
         }
-        for (let i=0; i < SPAN_CAPS.length; i++ ) {
-            SPAN_CAPS[i].classList.add('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.add('hidden');
         }
     }
 });
@@ -160,19 +162,19 @@ SHIFT_LEFT.addEventListener("mouseup", (event) => {
     let target=event.target.closest('div');
     target.classList.remove('active');
     if (pressedCapsLock==="false") {        
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_lOWER_CASE[i].classList.remove('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.remove('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_SHIFT[i].classList.add('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.add('hidden');
         }
     }
     else {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_SHIFT_CAPS[i].classList.add('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.add('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_CAPS[i].classList.remove('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.remove('hidden');
         }
     }
 });
@@ -181,19 +183,19 @@ SHIFT_RIGHT.addEventListener("mouseup", (event) => {
     let target=event.target.closest('div');
     target.classList.remove('active');
     if (pressedCapsLock==="false") {        
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_lOWER_CASE[i].classList.remove('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.remove('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_SHIFT[i].classList.add('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.add('hidden');
         }
     }
     else {
-        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-            SPAN_SHIFT_CAPS[i].classList.add('hidden');
+        for (let elem of SPAN_lOWER_CASE) {
+            elem.classList.add('hidden');
         }
-        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-            SPAN_CAPS[i].classList.remove('hidden');
+        for (let elem of SPAN_CAPS) {
+            elem.classList.remove('hidden');
         }
     }
 });
@@ -212,21 +214,21 @@ KEYBOARD.addEventListener("click", (event) => {
             case "capsLockKey":
                 if (pressedCapsLock==="false") {
                     target.classList.add('activeCaps');
-                    for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                        SPAN_lOWER_CASE[i].classList.add('hidden');
+                    for (let elem of SPAN_lOWER_CASE) {
+                        elem.classList.add('hidden');
                     }
-                    for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                        SPAN_CAPS[i].classList.remove('hidden');
+                    for (let elem of SPAN_CAPS) {
+                        elem.classList.remove('hidden');
                     }
                     pressedCapsLock="true";
                 }
                 else {
                     target.classList.remove('activeCaps');
-                    for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                        SPAN_lOWER_CASE[i].classList.remove('hidden');
+                    for (let elem of SPAN_lOWER_CASE) {
+                        elem.classList.remove('hidden');
                     }
-                    for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                        SPAN_CAPS[i].classList.add('hidden');
+                    for (let elem of SPAN_CAPS) {
+                        elem.classList.add('hidden');
                     }
                     pressedCapsLock="false";
                 }
@@ -299,21 +301,21 @@ document.addEventListener("keydown", (event) => {
         case "capsLockKey":
             if (pressedCapsLock==="false") {
                 pressedKey.classList.add('activeCaps');
-                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                    SPAN_lOWER_CASE[i].classList.add('hidden');
+                for (let elem of SPAN_lOWER_CASE) {
+                    elem.classList.add('hidden');
                 }
-                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                    SPAN_CAPS[i].classList.remove('hidden');
+                for (let elem of SPAN_CAPS) {
+                    elem.classList.remove('hidden');
                 }
                 pressedCapsLock="true";
             }
             else {
                 pressedKey.classList.remove('activeCaps');
-                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                    SPAN_lOWER_CASE[i].classList.remove('hidden');
+                for (let elem of SPAN_lOWER_CASE) {
+                    elem.classList.remove('hidden');
                 }
-                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                    SPAN_CAPS[i].classList.add('hidden');
+                for (let elem of SPAN_CAPS) {
+                    elem.classList.add('hidden');
                 }
                 pressedCapsLock="false";
             }
@@ -367,37 +369,37 @@ document.addEventListener("keydown", (event) => {
         case "shiftKey":
         case "shiftRightKey":
             if (pressedCapsLock=="false") {
-                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                    SPAN_lOWER_CASE[i].classList.add('hidden');
+                for (let elem of SPAN_lOWER_CASE) {
+                    elem.classList.add('hidden');
                 }
-                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                    SPAN_SHIFT[i].classList.remove('hidden');
+                for (let elem of SPAN_CAPS) {
+                    elem.classList.remove('hidden');
                 }
             }
             else {
-                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                    SPAN_SHIFT_CAPS[i].classList.remove('hidden');
+                for (let elem of SPAN_lOWER_CASE) {
+                    elem.classList.remove('hidden');
                 }
-                for (let i=0; i < SPAN_CAPS.length; i++ ) {
-                    SPAN_CAPS[i].classList.add('hidden');
+                for (let elem of SPAN_CAPS) {
+                    elem.classList.add('hidden');
                 }
             }
             document.addEventListener("keyup", (event) => {
                 if (event.code=="ShiftLeft" || event.code=="ShiftRight") {
                     if (pressedCapsLock==="false") {        
-                        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                            SPAN_lOWER_CASE[i].classList.remove('hidden');
+                        for (let elem of SPAN_lOWER_CASE) {
+                            elem.classList.remove('hidden');
                         }
-                        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                            SPAN_SHIFT[i].classList.add('hidden');
+                        for (let elem of SPAN_CAPS) {
+                            elem.classList.add('hidden');
                         }
                     }
                     else {
-                        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
-                            SPAN_SHIFT_CAPS[i].classList.add('hidden');
+                        for (let elem of SPAN_lOWER_CASE) {
+                            elem.classList.add('hidden');
                         }
-                        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
-                            SPAN_CAPS[i].classList.remove('hidden');
+                        for (let elem of SPAN_CAPS) {
+                            elem.classList.remove('hidden');
                         }
                     }
                 }
@@ -409,28 +411,28 @@ document.addEventListener("keydown", (event) => {
                 if (event.repeat) {
                     return;
                 }
-                document.addEventListener("keyup", (event) => {
+                document.onkeyup = (event) => {                    
                     event.preventDefault();
                     if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="ru") {
                         localStorage.setItem("inputLanguage", "en");
-                        for (let i=0; i < SPAN_RU.length; i++ ) {
-                            SPAN_RU[i].classList.add('hidden');
+                        for (let elem of SPAN_RU) {
+                            elem.classList.add('hidden');
                         }
-                        for (let i=0; i < SPAN_EN.length; i++ ) {
-                            SPAN_EN[i].classList.remove('hidden');
+                        for (let elem of SPAN_EN) {
+                            elem.classList.remove('hidden');
                         }
                     }
                     else if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="en") {
                         localStorage.setItem("inputLanguage", "ru");
-                        for (let i=0; i < SPAN_RU.length; i++ ) {
-                            SPAN_RU[i].classList.remove('hidden');
+                        for (let elem of SPAN_RU) {
+                            elem.classList.remove('hidden');
                         }
-                        for (let i=0; i < SPAN_EN.length; i++ ) {
-                            SPAN_EN[i].classList.add('hidden');
+                        for (let elem of SPAN_EN) {
+                            elem.classList.add('hidden');
                         }
                     }
                     pressedKey.classList.remove('active');
-                });
+                };
                 break;
     }
 })
