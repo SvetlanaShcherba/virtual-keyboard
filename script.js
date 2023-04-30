@@ -285,9 +285,10 @@ document.addEventListener("keydown", (event) => {
     let pressedKeyObj=KEYS.filter((elem) => elem.code===event.code);
     let pressedKey=document.querySelector("#"+event.code);
     pressedKey.classList.add('active');
-    document.onkeyup=function () {
+
+    document.addEventListener("keyup", () => {
         pressedKey.classList.remove('active');
-    }
+    });
 
     let textArr=Array.from(text);
     let startSelected=INPUT_FIELD.selectionStart;
