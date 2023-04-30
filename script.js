@@ -40,13 +40,13 @@ const KEYS = [
     { code: "KeyL", keyRu: "д", keyRuCaps: "Д", keyRuShift: "Д", keyRuShiftCaps: "д", keyEn: "l", keyEnCaps: "L", keyEnShift: "L", keyEnShiftCaps: "l", type: "typinKeys" },
     { code: "Semicolon", keyRu: "ж", keyRuCaps: "Ж", keyRuShift: "Ж", keyRuShiftCaps: "ж", keyEn: ";", keyEnCaps: ";", keyEnShift: ":", keyEnShiftCaps: ":", type: "typinKeys" },
     { code: "Quote", keyRu: "э", keyRuCaps: "Э", keyRuShift: "Э", keyRuShiftCaps: "э", keyEn: "'", keyEnCaps: "'", keyEnShift: "\"", keyEnShiftCaps: "\"", type: "typinKeys" },
-    { code: "Enter", keyRu: "Enter", keyRuCaps: "Enter", keyRuShift: "Enter", keyRuShiftCaps: "Enter", keyRuShift: "Tab", keyEn: "Enter", keyEnCaps: "Enter", keyEnShift: "Enter", keyEnShiftCaps: "Enter", type: "enterKey" },
+    { code: "Enter", keyRu: "Enter", keyRuCaps: "Enter", keyRuShift: "Enter", keyRuShiftCaps: "Enter", keyRuShift: "Enter", keyEn: "Enter", keyEnCaps: "Enter", keyEnShift: "Enter", keyEnShiftCaps: "Enter", type: "enterKey" },
     { code: "ShiftLeft", keyRu: "Shift", keyRuCaps: "Shift", keyRuShift: "Shift", keyRuShiftCaps: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", keyEnShiftCaps: "Shift", type: "shiftKey" },
     { code: "KeyZ", keyRu: "я", keyRuCaps: "Я", keyRuShift: "Я", keyRuShiftCaps: "я", keyEn: "z", keyEnCaps: "Z", keyEnShift: "Z", keyEnShiftCaps: "z", type: "typinKeys" },
     { code: "KeyX", keyRu: "ч", keyRuCaps: "Ч", keyRuShift: "Ч", keyRuShiftCaps: "ч", keyEn: "x", keyEnCaps: "X", keyEnShift: "X", keyEnShiftCaps: "x", type: "typinKeys" },
     { code: "KeyC", keyRu: "с", keyRuCaps: "С", keyRuShift: "С", keyRuShiftCaps: "с", keyEn: "c", keyEnCaps: "C", keyEnShift: "C", keyEnShiftCaps: "c", type: "typinKeys" },
-    { code: "KeyB", keyRu: "м", keyRuCaps: "М", keyRuShift: "М", keyRuShiftCaps: "м", keyEn: "v", keyEnCaps: "V", keyEnShift: "V", keyEnShiftCaps: "v", type: "typinKeys" },
-    { code: "KeyN", keyRu: "и", keyRuCaps: "И", keyRuShift: "И", keyRuShiftCaps: "и", keyEn: "b", keyEnCaps: "B", keyEnShift: "B", keyEnShiftCaps: "b", type: "typinKeys" },
+    { code: "KeyV", keyRu: "м", keyRuCaps: "М", keyRuShift: "М", keyRuShiftCaps: "м", keyEn: "v", keyEnCaps: "V", keyEnShift: "V", keyEnShiftCaps: "v", type: "typinKeys" },
+    { code: "KeyB", keyRu: "и", keyRuCaps: "И", keyRuShift: "И", keyRuShiftCaps: "и", keyEn: "b", keyEnCaps: "B", keyEnShift: "B", keyEnShiftCaps: "b", type: "typinKeys" },
     { code: "KeyN", keyRu: "т", keyRuCaps: "Т", keyRuShift: "Т", keyRuShiftCaps: "т", keyEn: "n", keyEnCaps: "N", keyEnShift: "N", keyEnShiftCaps: "n", type: "typinKeys" },
     { code: "KeyM", keyRu: "ь", keyRuCaps: "Ь", keyRuShift: "Ь", keyRuShiftCaps: "ь", keyEn: "m", keyEnCaps: "M", keyEnShift: "M", keyEnShiftCaps: "m", type: "typinKeys" },
     { code: "Comma", keyRu: "б", keyRuCaps: "Б", keyRuShift: "Б", keyRuShiftCaps: "б", keyEn: ",", keyEnCaps: ",", keyEnShift: "<", keyEnShiftCaps: "<", type: "typinKeys" },
@@ -54,7 +54,7 @@ const KEYS = [
     { code: "Slash", keyRu: ".", keyRuCaps: ".", keyRuShift: ",", keyRuShiftCaps: ",", keyEn: "/", keyEnCaps: "/", keyEnShift: "?", keyEnShiftCaps: "?", type: "typinKeys" },
     { code: "ArrowUp", keyRu: "▲", keyRuCaps: "▲", keyRuShift: "▲", keyRuShiftCaps: "▲", keyEn: "▲", keyEnCaps: "▲", keyEnShift: "▲", keyEnShiftCaps: "▲", type: "navigationKeys"},
     { code: "ShiftRight", keyRu: "Shift", keyRuCaps: "Shift", keyRuShiftCaps: "Shift", keyRuShift: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", keyEnShiftCaps: "Shift", type: "shiftRightKey" },
-    { code: "ControlLeft", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShiftCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "controlKeys" },
+    { code: "ControlLeft", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShiftCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "ctrlLeftKey" },
     { code: "OSLeft", keyRu: "Win", keyRuCaps: "Win", keyRuShift: "Win", keyRuShiftCaps: "Win", keyEn: "Win", keyEnCaps: "Win", keyEnShift: "Win", keyEnShiftCaps: "Win", type: "controlKeys" },
     { code: "AltLeft", keyRu: "Alt", keyRuCaps: "Alt", keyRuShift: "Alt", keyRuShiftCaps: "Alt", keyEn: "Alt", keyEnCaps: "Alt", keyEnShift: "Alt", keyEnShiftCaps: "Alt", type: "controlKeys" },
     { code: "Space", keyRu: " ", keyRuCaps: " ", keyRuShift: " ", keyRuShiftCaps: " ", keyEn: " ", keyEnCaps: " ", keyEnShift: " ", keyEnShiftCaps: " ", type: "spaceKey" },
@@ -62,19 +62,20 @@ const KEYS = [
     { code: "ArrowLeft", keyRu: "◄", keyRuCaps: "◄", keyRuShift: "◄", keyRuShiftCaps: "◄", keyEn: "◄", keyEnCaps: "◄", keyEnShift: "◄", keyEnShiftCaps: "◄", type: "navigationKeys" },
     { code: "ArrowDown", keyRu: "▼", keyRuCaps: "▼", keyRuShift: "▼", keyRuShiftCaps: "▼", keyEn: "▼", keyEnCaps: "▼", keyEnShift: "▼", keyEnShiftCaps: "▼", type: "navigationKeys" },
     { code: "ArrowRight", keyRu: "►", keyRuCaps: "►", keyRuShift: "►", keyRuShiftCaps: "►", keyEn: "►", keyEnCaps: "►", keyEnShift: "►", keyEnShiftCaps: "►", type: "navigationKeys" },
-    { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyRuShiftCaps: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "controlRightKeys" }
+    { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyRuShiftCaps: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "ctrlRightKey" }
 ];
 
 if (!localStorage.getItem('inputLanguage')) {
     localStorage.setItem('inputLanguage', 'ru');
 }
+
 function createDom () {
     document.body.insertAdjacentHTML('afterbegin', `<div class="container">
                                                         <h1 class="container__title">RSS Virtual Keyboard</h1>
                                                         <textarea autofocus class="container__text" id="text"></textarea>
                                                         <div class="container__keyboard" id="keyboard"></div>
                                                         <p class="container__description">Клавиатура создана в операционной системе Windows</p>
-                                                        <p class="container__description">Для переключения языка необхоимо нажать: левые shift + alt</p>                      
+                                                        <p class="container__description">Для переключения языка необхоимо нажать: левые ctrl + alt</p>                      
                                                     </div>`);
 
     const KEYBOARD = document.querySelector('#keyboard');
@@ -113,7 +114,9 @@ let pressedShift="false";
 const SHIFT_LEFT=document.querySelector("#ShiftLeft");
 const SHIFT_RIGHT=document.querySelector("#ShiftRight");
 
-SHIFT_LEFT.addEventListener("mousedown", () => {
+SHIFT_LEFT.addEventListener("mousedown", (event) => {
+    let target=event.target.closest('div');
+    target.classList.add('active');
     if (pressedCapsLock==="false") {
         for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
             SPAN_lOWER_CASE[i].classList.add('hidden');
@@ -132,7 +135,9 @@ SHIFT_LEFT.addEventListener("mousedown", () => {
     }
 });
 
-SHIFT_RIGHT.addEventListener("mousedown", () => {
+SHIFT_RIGHT.addEventListener("mousedown", (event) => {
+    let target=event.target.closest('div');
+    target.classList.add('active');
     if (pressedCapsLock==="false") {
         for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
             SPAN_lOWER_CASE[i].classList.add('hidden');
@@ -151,7 +156,9 @@ SHIFT_RIGHT.addEventListener("mousedown", () => {
     }
 });
 
-SHIFT_LEFT.addEventListener("mouseup", () => {
+SHIFT_LEFT.addEventListener("mouseup", (event) => {
+    let target=event.target.closest('div');
+    target.classList.remove('active');
     if (pressedCapsLock==="false") {        
         for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
             SPAN_lOWER_CASE[i].classList.remove('hidden');
@@ -170,7 +177,9 @@ SHIFT_LEFT.addEventListener("mouseup", () => {
     }
 });
 
-SHIFT_RIGHT.addEventListener("mouseup", () => {
+SHIFT_RIGHT.addEventListener("mouseup", (event) => {
+    let target=event.target.closest('div');
+    target.classList.remove('active');
     if (pressedCapsLock==="false") {        
         for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
             SPAN_lOWER_CASE[i].classList.remove('hidden');
@@ -202,7 +211,7 @@ KEYBOARD.addEventListener("click", (event) => {
         switch (pressedKey) {
             case "capsLockKey":
                 if (pressedCapsLock==="false") {
-                    target.classList.add('active');
+                    target.classList.add('activeCaps');
                     for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
                         SPAN_lOWER_CASE[i].classList.add('hidden');
                     }
@@ -212,7 +221,7 @@ KEYBOARD.addEventListener("click", (event) => {
                     pressedCapsLock="true";
                 }
                 else {
-                    target.classList.remove('active');
+                    target.classList.remove('activeCaps');
                     for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
                         SPAN_lOWER_CASE[i].classList.remove('hidden');
                     }
@@ -271,34 +280,156 @@ KEYBOARD.addEventListener("click", (event) => {
     }
 })
 
-document.onkeydown=function (event) {
-    if (event.repeat) {
-        return;
-    }
+document.addEventListener("keydown", (event) => {
     event.preventDefault();
-    if (event.code=="ShiftLeft" || event.code=="ShiftRight") {
-        document.onkeyup=function (event){
-            event.preventDefault();
-            if (event.code=="AltLeft" || event.code=="AltRight") {
-                if (localStorage.getItem("inputLanguage")=="ru") {
-                    localStorage.setItem("inputLanguage", "en");
-                    for (let i=0; i < SPAN_RU.length; i++ ) {
-                        SPAN_RU[i].classList.add('hidden');
-                    }
-                    for (let i=0; i < SPAN_EN.length; i++ ) {
-                        SPAN_EN[i].classList.remove('hidden');
-                    }
+    let pressedKeyObj=KEYS.filter((elem) => elem.code===event.code);
+    let pressedKey=document.querySelector("#"+event.code);
+    pressedKey.classList.add('active');
+    document.onkeyup=function () {
+        pressedKey.classList.remove('active');
+    }
+
+    let textArr=Array.from(text);
+    let startSelected=INPUT_FIELD.selectionStart;
+    let endSelected=INPUT_FIELD.selectionEnd;
+
+    let pressedKeyType=pressedKeyObj[0].type;
+    switch (pressedKeyType) {
+        case "capsLockKey":
+            if (pressedCapsLock==="false") {
+                pressedKey.classList.add('activeCaps');
+                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                    SPAN_lOWER_CASE[i].classList.add('hidden');
                 }
-                else {
-                    localStorage.setItem("inputLanguage", "ru");
-                    for (let i=0; i < SPAN_RU.length; i++ ) {
-                        SPAN_RU[i].classList.remove('hidden');
-                    }
-                    for (let i=0; i < SPAN_EN.length; i++ ) {
-                        SPAN_EN[i].classList.add('hidden');
-                    }
+                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                    SPAN_CAPS[i].classList.remove('hidden');
+                }
+                pressedCapsLock="true";
+            }
+            else {
+                pressedKey.classList.remove('activeCaps');
+                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                    SPAN_lOWER_CASE[i].classList.remove('hidden');
+                }
+                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                    SPAN_CAPS[i].classList.add('hidden');
+                }
+                pressedCapsLock="false";
+            }
+            break;
+        
+        case "typinKeys":
+        case "navigationKeys":
+            textArr.splice(startSelected, endSelected-startSelected, pressedKey.innerText);
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+            break;
+        
+        case "spaceKey":
+            textArr.splice(startSelected, endSelected-startSelected, " ");
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+            break;
+
+        case "tabKey":
+            textArr.splice(startSelected, endSelected-startSelected, "    ");
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+4;
+            INPUT_FIELD.focus();
+            break;
+    
+        case "enterKey":
+            textArr.splice(startSelected, endSelected-startSelected, "\n");
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
+            INPUT_FIELD.focus();
+            break;
+        
+        case "delKey":
+            textArr.splice(startSelected, 1);
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected;
+            break;
+
+        case "backspaceKeys":
+            textArr.splice(startSelected-1, 1);
+            text=textArr.join('');
+            INPUT_FIELD.value=text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+            break;
+
+        case "shiftKey":
+        case "shiftRightKey":
+            if (pressedCapsLock=="false") {
+                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                    SPAN_lOWER_CASE[i].classList.add('hidden');
+                }
+                for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                    SPAN_SHIFT[i].classList.remove('hidden');
                 }
             }
-        };
+            else {
+                for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                    SPAN_SHIFT_CAPS[i].classList.remove('hidden');
+                }
+                for (let i=0; i < SPAN_CAPS.length; i++ ) {
+                    SPAN_CAPS[i].classList.add('hidden');
+                }
+            }
+            document.addEventListener("keyup", (event) => {
+                if (event.code=="ShiftLeft" || event.code=="ShiftRight") {
+                    if (pressedCapsLock==="false") {        
+                        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                            SPAN_lOWER_CASE[i].classList.remove('hidden');
+                        }
+                        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                            SPAN_SHIFT[i].classList.add('hidden');
+                        }
+                    }
+                    else {
+                        for (let i=0; i < SPAN_lOWER_CASE.length; i++ ) {
+                            SPAN_SHIFT_CAPS[i].classList.add('hidden');
+                        }
+                        for (let i=0; i <  SPAN_CAPS.length; i++ ) {
+                            SPAN_CAPS[i].classList.remove('hidden');
+                        }
+                    }
+                }
+            })
+            break;
+
+            case "ctrlLeftKey":
+                event.preventDefault();
+                if (event.repeat) {
+                    return;
+                }
+                document.addEventListener("keyup", (event) => {
+                    event.preventDefault();
+                    if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="ru") {
+                        localStorage.setItem("inputLanguage", "en");
+                        for (let i=0; i < SPAN_RU.length; i++ ) {
+                            SPAN_RU[i].classList.add('hidden');
+                        }
+                        for (let i=0; i < SPAN_EN.length; i++ ) {
+                            SPAN_EN[i].classList.remove('hidden');
+                        }
+                    }
+                    else if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="en") {
+                        localStorage.setItem("inputLanguage", "ru");
+                        for (let i=0; i < SPAN_RU.length; i++ ) {
+                            SPAN_RU[i].classList.remove('hidden');
+                        }
+                        for (let i=0; i < SPAN_EN.length; i++ ) {
+                            SPAN_EN[i].classList.add('hidden');
+                        }
+                    }
+                    pressedKey.classList.remove('active');
+                });
+                break;
     }
-};
+})

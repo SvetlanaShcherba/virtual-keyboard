@@ -45,10 +45,10 @@
 .key:active {
     background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
     box-shadow:
-     0 0 1px rgba(0,0,0,0.5) inset,
-     0 2px 3px rgba(0,0,0,0.5) inset,
-     0 1px 1px rgba(255,255,255,0.1);
-  }
+        0 0 1px rgba(0,0,0,0.5) inset,
+        0 2px 3px rgba(0,0,0,0.5) inset,
+        0 1px 1px rgba(255,255,255,0.1);
+}
 
 .typinKeys,
 .spaceKey {
@@ -64,14 +64,15 @@
 .enterKey,
 .shiftKey,
 .shiftRightKey,
-.controlRightKeys {
+.ctrlRightKey,
+.ctrlLeftKey {
     background: #302e2e;
 }
 
 .backspaceKeys,
 .enterKey,
 .shiftRightKey,
-.controlRightKeys {    
+.ctrlRightKey {    
     margin: 0 0 6px 0;
 }
 
@@ -81,6 +82,7 @@
 .capsLockKey,
 .shiftKey,
 .controlKeys,
+.ctrlLeftKey,
 .spaceKey {
     margin: 0 6px 6px 0;
 }
@@ -98,7 +100,8 @@
 .navigationKeys,
 .controlKeys,
 .delKey,
-.controlRightKeys {
+.ctrlRightKey,
+.ctrlLeftKey {
     width: 40px;
 }
 
@@ -113,6 +116,14 @@
     width: 344px;
 }
 
-.active {
+.activeCaps {
     background: red;
+}
+
+.active {
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+    box-shadow:
+        0 0 1px rgba(0,0,0,0.5) inset,
+        0 2px 3px rgba(0,0,0,0.5) inset,
+        0 1px 1px rgba(255,255,255,0.1);
 }
