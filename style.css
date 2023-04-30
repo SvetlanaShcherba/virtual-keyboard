@@ -100,9 +100,12 @@
 .navigationKeys,
 .controlKeys,
 .delKey,
-.ctrlRightKey,
-.ctrlLeftKey {
+.ctrlLeftKey  {
     width: 40px;
+}
+
+.ctrlRightKey{
+    width: 48px;
 }
 
 .capsLockKey,
@@ -113,7 +116,7 @@
 }
 
 .spaceKey {
-    width: 344px;
+    width: 336px;
 }
 
 .activeCaps {
@@ -126,4 +129,8 @@
         0 0 1px rgba(0,0,0,0.5) inset,
         0 2px 3px rgba(0,0,0,0.5) inset,
         0 1px 1px rgba(255,255,255,0.1);
+}
+
+.container__description {
+    font-size: 20px;
 }
