@@ -193,384 +193,382 @@ const KEYS = [
     },
   ];
 
-if (!localStorage.getItem('inputLanguage')) {
+  if (!localStorage.getItem('inputLanguage')) {
     localStorage.setItem('inputLanguage', 'ru');
-}
-
-let createDom=()=> {
-    document.body.insertAdjacentHTML('afterbegin', `<div class="container">
-                                                        <h1 class="container__title">RSS Virtual Keyboard</h1>
-                                                        <textarea autofocus class="container__text" id="text"></textarea>
-                                                        <div class="container__keyboard" id="keyboard"></div>
-                                                        <p class="container__description">Клавиатура создана в операционной системе Windows</p>
-                                                        <p class="container__description">Для переключения языка необхоимо нажать: левые ctrl + alt</p>                      
+  }
+  
+  const createDom = () => {
+    document.body.insertAdjacentHTML('afterbegin', `<div class='container'>
+                                                      <h1 class='container__title'>RSS Virtual Keyboard</h1>
+                                                      <textarea autofocus class='container__text' id='text'></textarea>
+                                                      <div class='container__keyboard' id='keyboard'></div>
+                                                      <p class='container__description'>Клавиатура создана в операционной системе Windows</p>
+                                                      <p class='container__description'>Для переключения языка необхоимо нажать: левые ctrl + alt</p>
                                                     </div>`);
-
+  
     const KEYBOARD = document.querySelector('#keyboard');
-
-    for (let i = 0; i < KEYS.length; i ++) {
-      KEYBOARD.insertAdjacentHTML('beforeend', `<div class="key ${KEYS[i].type}" id="${KEYS[i].code}">
-                                                    <span class="ru ${localStorage.getItem('inputLanguage') == 'en' ? 'hidden' : ''}" id="spanRu">
-                                                        <span class="keylowerCase">${KEYS[i].keyRu}</span>
-                                                        <span class="capsLock hidden">${KEYS[i].keyRuCaps}</span>
-                                                        <span class="shift hidden">${KEYS[i].keyRuShift}</span>                                                            
-                                                        <span class="shift-capsLock hidden">${KEYS[i].keyRuShiftCaps}</span>
-                                                    </span>
-                                                    <span class="en ${localStorage.getItem('inputLanguage') == 'ru' ? 'hidden' : ''}" id="spanEn">
-                                                        <span class="keylowerCase">${KEYS[i].keyEn}</span>
-                                                        <span class="capsLock hidden">${KEYS[i].keyEnCaps}</span>
-                                                        <span class="shift hidden">${KEYS[i].keyEnShift}</span>                                                            
-                                                        <span class="shift-capsLock hidden">${KEYS[i].keyEnShiftCaps}</span>
-                                                    </span>
+  
+    for (let i = 0; i < KEYS.length; i += 1) {
+      KEYBOARD.insertAdjacentHTML('beforeend', `<div class='key ${KEYS[i].type}' id='${KEYS[i].code}'>
+                                                  <span class='ru ${localStorage.getItem('inputLanguage') === 'en' ? 'hidden' : ''}' id='spanRu'>
+                                                    <span class='keylowerCase'>${KEYS[i].keyRu}</span>
+                                                    <span class='capsLock hidden'>${KEYS[i].keyRuCaps}</span>
+                                                    <span class='shift hidden'>${KEYS[i].keyRuShift}</span>                                                            
+                                                    <span class='shift-capsLock hidden'>${KEYS[i].keyRuShiftCaps}</span>
+                                                  </span>
+                                                  <span class='en ${localStorage.getItem('inputLanguage') === 'ru' ? 'hidden' : ''}' id='spanEn'>
+                                                    <span class='keylowerCase'>${KEYS[i].keyEn}</span>
+                                                    <span class='capsLock hidden'>${KEYS[i].keyEnCaps}</span>
+                                                    <span class='shift hidden'>${KEYS[i].keyEnShift}</span>                                                            
+                                                    <span class='shift-capsLock hidden'>${KEYS[i].keyEnShiftCaps}</span>
+                                                  </span>
                                                 </div>`);
     }
-};
-createDom();
-
-const INPUT_FIELD = document.querySelector('#text');
-const KEYBOARD = document.querySelector('#keyboard');
-const SPAN_lOWER_CASE = document.querySelectorAll('.keylowerCase');
-const SPAN_CAPS = document.querySelectorAll('.capsLock');
-const SPAN_SHIFT = document.querySelectorAll('.shift');
-const SPAN_SHIFT_CAPS = document.querySelectorAll('.shift-capsLock');
-const SPAN_RU = document.querySelectorAll('#spanRu');
-const SPAN_EN = document.querySelectorAll('#spanEn');
-const CTRL_L = document.querySelector('#ControlLeft');
-
-let text="";
-let pressedCapsLock="false";
-let pressedShift="false";
-
-const SHIFT_LEFT=document.querySelector("#ShiftLeft");
-const SHIFT_RIGHT=document.querySelector("#ShiftRight");
-
-SHIFT_LEFT.addEventListener("mousedown", (event) => {
-    let target=event.target.closest('div');
+  };
+  createDom();
+  
+  const INPUT_FIELD = document.querySelector('#text');
+  const KEYBOARD = document.querySelector('#keyboard');
+  const spanlowerCase = document.querySelectorAll('.keylowerCase');
+  const SPAN_CAPS = document.querySelectorAll('.capsLock');
+  const SPAN_RU = document.querySelectorAll('#spanRu');
+  const SPAN_EN = document.querySelectorAll('#spanEn');
+  let text = '';
+  let pressedCapsLock = 'false';
+  
+  const SHIFT_LEFT = document.querySelector('#ShiftLeft');
+  const SHIFT_RIGHT = document.querySelector('#ShiftRight');
+  
+  SHIFT_LEFT.addEventListener('mousedown', (event) => {
+    const target = event.target.closest('div');
     target.classList.add('active');
-    if (pressedCapsLock==="false") {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.add('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.remove('hidden');
-        }
+    if (pressedCapsLock === 'false') {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.add('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.remove('hidden');
+      }
+    } else {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.remove('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.add('hidden');
+      }
     }
-    else {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.remove('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.add('hidden');
-        }
-    }
-});
-
-SHIFT_RIGHT.addEventListener("mousedown", (event) => {
-    let target=event.target.closest('div');
+  });
+  
+  SHIFT_RIGHT.addEventListener('mousedown', (event) => {
+    const target = event.target.closest('div');
     target.classList.add('active');
-    if (pressedCapsLock==="false") {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.add('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.remove('hidden');
-        }
+    if (pressedCapsLock === 'false') {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.add('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.remove('hidden');
+      }
+    } else {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.remove('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.add('hidden');
+      }
     }
-    else {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.remove('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.add('hidden');
-        }
-    }
-});
-
-SHIFT_LEFT.addEventListener("mouseup", (event) => {
-    let target=event.target.closest('div');
+  });
+  
+  SHIFT_LEFT.addEventListener('mouseup', (event) => {
+    const target = event.target.closest('div');
     target.classList.remove('active');
-    if (pressedCapsLock==="false") {        
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.remove('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.add('hidden');
-        }
+    if (pressedCapsLock === 'false') {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.remove('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.add('hidden');
+      }
+    } else {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.add('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.remove('hidden');
+      }
     }
-    else {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.add('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.remove('hidden');
-        }
-    }
-});
-
-SHIFT_RIGHT.addEventListener("mouseup", (event) => {
-    let target=event.target.closest('div');
+  });
+  
+  SHIFT_RIGHT.addEventListener('mouseup', (event) => {
+    const target = event.target.closest('div');
     target.classList.remove('active');
-    if (pressedCapsLock==="false") {        
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.remove('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.add('hidden');
-        }
+    if (pressedCapsLock === 'false') {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.remove('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.add('hidden');
+      }
+    } else {
+      for (let i = 0; i < spanlowerCase.length; i += 1) {
+        spanlowerCase[i].classList.add('hidden');
+      }
+      for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+        SPAN_CAPS[i].classList.remove('hidden');
+      }
     }
-    else {
-        for (let elem of SPAN_lOWER_CASE) {
-            elem.classList.add('hidden');
-        }
-        for (let elem of SPAN_CAPS) {
-            elem.classList.remove('hidden');
-        }
+  });
+  
+  KEYBOARD.addEventListener('click', (event) => {
+    const target = event.target.closest('div');
+    const pressedKeyObj = KEYS.filter((elem) => elem.code === target.id);
+    const textArr = Array.from(text);
+    const startSelected = INPUT_FIELD.selectionStart;
+    const endSelected = INPUT_FIELD.selectionEnd;
+  
+    if (target.id !== 'keyboard') {
+      const pressedKey = pressedKeyObj[0].type;
+      switch (pressedKey) {
+        case 'capsLockKey':
+          if (pressedCapsLock === 'false') {
+            target.classList.add('activeCaps');
+            for (let i = 0; i < spanlowerCase.length; i += 1) {
+              spanlowerCase[i].classList.add('hidden');
+            }
+            for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+              SPAN_CAPS[i].classList.remove('hidden');
+            }
+            pressedCapsLock = 'true';
+          } else {
+            target.classList.remove('activeCaps');
+            for (let i = 0; i < spanlowerCase.length; i += 1) {
+              spanlowerCase[i].classList.remove('hidden');
+            }
+            for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+              SPAN_CAPS[i].classList.add('hidden');
+            }
+            pressedCapsLock = 'false';
+          }
+          break;
+  
+        case 'typinKeys':
+        case 'navigationKeys':
+          textArr.splice(startSelected, endSelected - startSelected, target.innerText);
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected + 1;
+          break;
+  
+        case 'spaceKey':
+          textArr.splice(startSelected, endSelected - startSelected, ' ');
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected + 1;
+          break;
+  
+        case 'tabKey':
+          textArr.splice(startSelected, endSelected - startSelected, '    ');
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected + 4;
+          INPUT_FIELD.focus();
+          break;
+  
+        case 'enterKey':
+          textArr.splice(startSelected, endSelected - startSelected, '\n');
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected + 1;
+          INPUT_FIELD.focus();
+          break;
+  
+        case 'delKey':
+          textArr.splice(startSelected, 1);
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected;
+          break;
+  
+        case 'backspaceKeys':
+          if (startSelected !== 0) {
+            textArr.splice(startSelected - 1, 1);
+            text = textArr.join('');
+            INPUT_FIELD.value = text;
+            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+            INPUT_FIELD.selectionEnd = startSelected - 1;
+          } else {
+            INPUT_FIELD.focus();
+          }
+          break;
+        default:
+          break;
+      }
     }
-});
-
-
-KEYBOARD.addEventListener("click", (event) => {
-    let target=event.target.closest('div');
-    let pressedKeyObj=KEYS.filter((elem) => elem.code===target.id);
-    let textArr=Array.from(text);
-    let startSelected=INPUT_FIELD.selectionStart;
-    let endSelected=INPUT_FIELD.selectionEnd;
-
-    if (target.id!=="keyboard") {
-        let pressedKey=pressedKeyObj[0].type;
-        switch (pressedKey) {
-            case "capsLockKey":
-                if (pressedCapsLock==="false") {
-                    target.classList.add('activeCaps');
-                    for (let elem of SPAN_lOWER_CASE) {
-                        elem.classList.add('hidden');
-                    }
-                    for (let elem of SPAN_CAPS) {
-                        elem.classList.remove('hidden');
-                    }
-                    pressedCapsLock="true";
-                }
-                else {
-                    target.classList.remove('activeCaps');
-                    for (let elem of SPAN_lOWER_CASE) {
-                        elem.classList.remove('hidden');
-                    }
-                    for (let elem of SPAN_CAPS) {
-                        elem.classList.add('hidden');
-                    }
-                    pressedCapsLock="false";
-                }
-                break;
-            
-            case "typinKeys":
-            case "navigationKeys":
-                textArr.splice(startSelected, endSelected-startSelected, target.innerText);
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-                break;
-            
-            case "spaceKey":
-                textArr.splice(startSelected, endSelected-startSelected, " ");
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-                break;
-
-            case "tabKey":
-                textArr.splice(startSelected, endSelected-startSelected, "    ");
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+4;
-                INPUT_FIELD.focus();
-                break;
-        
-            case "enterKey":
-                textArr.splice(startSelected, endSelected-startSelected, "\n");
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-                INPUT_FIELD.focus();
-                break;
-            
-            case "delKey":
-                textArr.splice(startSelected, 1);
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected;
-                break;
-
-            case "backspaceKeys":
-                if (startSelected!==0) {
-                    textArr.splice(startSelected-1, 1);
-                    text=textArr.join('');
-                    INPUT_FIELD.value=text;
-                    INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
-                }
-                else {
-                    INPUT_FIELD.focus();
-                }
-                break;
-        }
-    }
-})
-
-document.addEventListener("keydown", (event) => {
-    event.preventDefault();
-    let pressedKeyObj=KEYS.filter((elem) => elem.code===event.code);
-    let pressedKey=document.querySelector("#"+event.code);
+  });
+  
+  document.addEventListener('keydown', (ev) => {
+    ev.preventDefault();
+    const pressedKeyObj = KEYS.filter((elem) => elem.code === ev.code);
+    const pressedKey = document.querySelector(`#${ev.code}`);
     pressedKey.classList.add('active');
-
-    document.addEventListener("keyup", () => {
-        pressedKey.classList.remove('active');
+  
+    document.addEventListener('keyup', () => {
+      pressedKey.classList.remove('active');
     });
-
-    let textArr=Array.from(text);
-    let startSelected=INPUT_FIELD.selectionStart;
-    let endSelected=INPUT_FIELD.selectionEnd;
-
-    let pressedKeyType=pressedKeyObj[0].type;
+  
+    const textArr = Array.from(text);
+    const startSelected = INPUT_FIELD.selectionStart;
+    const endSelected = INPUT_FIELD.selectionEnd;
+    const pressedKeyType = pressedKeyObj[0].type;
     switch (pressedKeyType) {
-        case "capsLockKey":
-            if (pressedCapsLock==="false") {
-                pressedKey.classList.add('activeCaps');
-                for (let elem of SPAN_lOWER_CASE) {
-                    elem.classList.add('hidden');
-                }
-                for (let elem of SPAN_CAPS) {
-                    elem.classList.remove('hidden');
-                }
-                pressedCapsLock="true";
+      case 'capsLockKey':
+        if (pressedCapsLock === 'false') {
+          pressedKey.classList.add('activeCaps');
+          for (let i = 0; i < spanlowerCase.length; i += 1) {
+            spanlowerCase[i].classList.add('hidden');
+          }
+          for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+            SPAN_CAPS[i].classList.remove('hidden');
+          }
+          pressedCapsLock = 'true';
+        } else {
+          pressedKey.classList.remove('activeCaps');
+          for (let i = 0; i < spanlowerCase.length; i += 1) {
+            spanlowerCase[i].classList.remove('hidden');
+          }
+          for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+            SPAN_CAPS[i].classList.add('hidden');
+          }
+          pressedCapsLock = 'false';
+        }
+        break;
+  
+      case 'typinKeys':
+      case 'navigationKeys':
+        textArr.splice(startSelected, endSelected - startSelected, pressedKey.innerText);
+        text = textArr.join('');
+        INPUT_FIELD.value = text;
+        INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+        INPUT_FIELD.selectionEnd = startSelected + 1;
+        break;
+  
+      case 'spaceKey':
+        textArr.splice(startSelected, endSelected - startSelected, ' ');
+        text = textArr.join('');
+        INPUT_FIELD.value = text;
+        INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+        INPUT_FIELD.selectionEnd = startSelected + 1;
+        break;
+  
+      case 'tabKey':
+        textArr.splice(startSelected, endSelected - startSelected, '    ');
+        text = textArr.join('');
+        INPUT_FIELD.value = text;
+        INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+        INPUT_FIELD.selectionEnd = startSelected + 4;
+        INPUT_FIELD.focus();
+        break;
+  
+      case 'enterKey':
+        textArr.splice(startSelected, endSelected - startSelected, '\n');
+        text = textArr.join('');
+        INPUT_FIELD.value = text;
+        INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+        INPUT_FIELD.selectionEnd = startSelected + 1;
+        INPUT_FIELD.focus();
+        break;
+  
+      case 'delKey':
+        textArr.splice(startSelected, 1);
+        text = textArr.join('');
+        INPUT_FIELD.value = text;
+        INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+        INPUT_FIELD.selectionEnd = startSelected;
+        break;
+  
+      case 'backspaceKeys':
+        if (startSelected !== 0) {
+          textArr.splice(startSelected - 1, 1);
+          text = textArr.join('');
+          INPUT_FIELD.value = text;
+          INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd;
+          INPUT_FIELD.selectionEnd = startSelected - 1;
+        } else {
+          INPUT_FIELD.focus();
+        }
+        break;
+  
+      case 'shiftKey':
+      case 'shiftRightKey':
+        if (pressedCapsLock === 'false') {
+          for (let i = 0; i < spanlowerCase.length; i += 1) {
+            spanlowerCase[i].classList.add('hidden');
+          }
+          for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+            SPAN_CAPS[i].classList.remove('hidden');
+          }
+        } else {
+          for (let i = 0; i < spanlowerCase.length; i += 1) {
+            spanlowerCase[i].classList.remove('hidden');
+          }
+          for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+            SPAN_CAPS[i].classList.add('hidden');
+          }
+        }
+        document.addEventListener('keyup', (event) => {
+          if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+            if (pressedCapsLock === 'false') {
+              for (let i = 0; i < spanlowerCase.length; i += 1) {
+                spanlowerCase[i].classList.remove('hidden');
+              }
+              for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+                SPAN_CAPS[i].classList.add('hidden');
+              }
+            } else {
+              for (let i = 0; i < spanlowerCase.length; i += 1) {
+                spanlowerCase[i].classList.add('hidden');
+              }
+              for (let i = 0; i < SPAN_CAPS.length; i += 1) {
+                SPAN_CAPS[i].classList.remove('hidden');
+              }
             }
-            else {
-                pressedKey.classList.remove('activeCaps');
-                for (let elem of SPAN_lOWER_CASE) {
-                    elem.classList.remove('hidden');
-                }
-                for (let elem of SPAN_CAPS) {
-                    elem.classList.add('hidden');
-                }
-                pressedCapsLock="false";
+          }
+        });
+        break;
+  
+      case 'ctrlLeftKey':
+        ev.preventDefault();
+        if (ev.repeat) {
+          return;
+        }
+        document.onkeyup = (e) => {
+          e.preventDefault();
+          if (e.code === 'AltLeft' && localStorage.getItem('inputLanguage') === 'ru') {
+            localStorage.setItem('inputLanguage', 'en');
+            for (let i = 0; i < SPAN_RU.length; i += 1) {
+              SPAN_RU[i].classList.add('hidden');
             }
-            break;
-        
-        case "typinKeys":
-        case "navigationKeys":
-            textArr.splice(startSelected, endSelected-startSelected, pressedKey.innerText);
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-            break;
-        
-        case "spaceKey":
-            textArr.splice(startSelected, endSelected-startSelected, " ");
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-            break;
-
-        case "tabKey":
-            textArr.splice(startSelected, endSelected-startSelected, "    ");
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+4;
-            INPUT_FIELD.focus();
-            break;
-    
-        case "enterKey":
-            textArr.splice(startSelected, endSelected-startSelected, "\n");
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected+1;
-            INPUT_FIELD.focus();
-            break;
-        
-        case "delKey":
-            textArr.splice(startSelected, 1);
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected;
-            break;
-
-        case "backspaceKeys":
-            if (startSelected!==0) {
-                textArr.splice(startSelected-1, 1);
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+            for (let i = 0; i < SPAN_EN.length; i += 1) {
+              SPAN_EN[i].classList.remove('hidden');
             }
-            else {
-                INPUT_FIELD.focus();
+          } else if (e.code === 'AltLeft' && localStorage.getItem('inputLanguage') === 'en') {
+            localStorage.setItem('inputLanguage', 'ru');
+            for (let i = 0; i < SPAN_RU.length; i += 1) {
+              SPAN_RU[i].classList.remove('hidden');
             }
-            break;
-
-        case "shiftKey":
-        case "shiftRightKey":
-            if (pressedCapsLock=="false") {
-                for (let elem of SPAN_lOWER_CASE) {
-                    elem.classList.add('hidden');
-                }
-                for (let elem of SPAN_CAPS) {
-                    elem.classList.remove('hidden');
-                }
+            for (let i = 0; i < SPAN_EN.length; i += 1) {
+              SPAN_EN[i].classList.add('hidden');
             }
-            else {
-                for (let elem of SPAN_lOWER_CASE) {
-                    elem.classList.remove('hidden');
-                }
-                for (let elem of SPAN_CAPS) {
-                    elem.classList.add('hidden');
-                }
-            }
-            document.addEventListener("keyup", (event) => {
-                if (event.code=="ShiftLeft" || event.code=="ShiftRight") {
-                    if (pressedCapsLock==="false") {        
-                        for (let elem of SPAN_lOWER_CASE) {
-                            elem.classList.remove('hidden');
-                        }
-                        for (let elem of SPAN_CAPS) {
-                            elem.classList.add('hidden');
-                        }
-                    }
-                    else {
-                        for (let elem of SPAN_lOWER_CASE) {
-                            elem.classList.add('hidden');
-                        }
-                        for (let elem of SPAN_CAPS) {
-                            elem.classList.remove('hidden');
-                        }
-                    }
-                }
-            })
-            break;
-
-            case "ctrlLeftKey":
-                event.preventDefault();
-                if (event.repeat) {
-                    return;
-                }
-                document.onkeyup = (event) => {                    
-                    event.preventDefault();
-                    if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="ru") {
-                        localStorage.setItem("inputLanguage", "en");
-                        for (let elem of SPAN_RU) {
-                            elem.classList.add('hidden');
-                        }
-                        for (let elem of SPAN_EN) {
-                            elem.classList.remove('hidden');
-                        }
-                    }
-                    else if (event.code==="AltLeft" && localStorage.getItem("inputLanguage")==="en") {
-                        localStorage.setItem("inputLanguage", "ru");
-                        for (let elem of SPAN_RU) {
-                            elem.classList.remove('hidden');
-                        }
-                        for (let elem of SPAN_EN) {
-                            elem.classList.add('hidden');
-                        }
-                    }
-                    pressedKey.classList.remove('active');
-                };
-                break;
+          }
+          pressedKey.classList.remove('active');
+        };
+        break;
+      default:
+        break;
     }
-})
+  });
