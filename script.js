@@ -1,69 +1,197 @@
 const KEYS = [
-    { code: "Backquote", keyRu: "ё", keyRuCaps: "Ё", keyRuShift: "Ё", keyRuShiftCaps: "ё", keyEn: "`", keyEnCaps: "`", keyEnShift: "~", keyEnShiftCaps: "~", type: "typinKeys"},
-    { code: "Digit1", keyRu: "1", keyRuCaps: "1", keyRuShift: "!", keyRuShiftCaps: "!",  keyEn: "1" , keyEnCaps: "1", keyEnShift: "!", keyEnShiftCaps: "!", type: "typinKeys" },
-    { code: "Digit2", keyRu: "2", keyRuCaps: "2", keyRuShift: "\"", keyRuShiftCaps: "\"",  keyEn: "2", keyEnCaps: "2", keyEnShift: "@", keyEnShiftCaps: "@", type: "typinKeys" },
-    { code: "Digit3", keyRu: "3", keyRuCaps: "3", keyRuShift: "№", keyRuShiftCaps: "№", keyEn: "3", keyEnCaps: "3", keyEnShift: "#", keyEnShiftCaps: "#", type: "typinKeys" },
-    { code: "Digit4", keyRu: "4", keyRuCaps: "4", keyRuShift: ";", keyRuShiftCaps: ";", keyEn: "4", keyEnCaps: "4", keyEnShift: "$", keyEnShiftCaps: "$", type: "typinKeys" },
-    { code: "Digit5", keyRu: "5", keyRuCaps: "5", keyRuShift: "%", keyRuShiftCaps: "%", keyEn: "5", keyEnCaps: "5", keyEnShift: "%", keyEnShiftCaps: "%", type: "typinKeys" },
-    { code: "Digit6", keyRu: "6", keyRuCaps: "6", keyRuShift: ":", keyRuShiftCaps: ":", keyEn: "6", keyEnCaps: "6", keyEnShift: "^", keyEnShiftCaps: "^", type: "typinKeys" },
-    { code: "Digit7", keyRu: "7", keyRuCaps: "7", keyRuShift: "?", keyRuShiftCaps: "?", keyEn: "7", keyEnCaps: "7", keyEnShift: "&", keyEnShiftCaps: "&", type: "typinKeys" },
-    { code: "Digit8", keyRu: "8", keyRuCaps: "8", keyRuShift: "*", keyRuShiftCaps: "*", keyEn: "8", keyEnCaps: "8", keyEnShift: "*", keyEnShiftCaps: "*", type: "typinKeys" },
-    { code: "Digit9", keyRu: "9", keyRuCaps: "9", keyRuShift: "(", keyRuShiftCaps: "(", keyEn: "9", keyEnCaps: "9", keyEnShift: "(", keyEnShiftCaps: "(", type: "typinKeys" },
-    { code: "Digit0", keyRu: "0", keyRuCaps: "0", keyRuShift: ")", keyRuShiftCaps: ")", keyEn: "0", keyEnCaps: "0", keyEnShift: ")", keyEnShiftCaps: ")", type: "typinKeys" },
-    { code: "Minus", keyRu: "-", keyRuCaps: "-", keyRuShift: "_", keyRuShiftCaps: "_", keyEn: "-", keyEnCaps: "-", keyEnShift: "_" , keyEnShiftCaps: "_", type: "typinKeys"},
-    { code: "Equal", keyRu: "=", keyRuCaps: "=", keyRuShift: "+", keyRuShiftCaps: "+", keyEn: "=", keyEnCaps: "=", keyEnShift: "+", keyEnShiftCaps: "+", type: "typinKeys" },
-    { code: "Backspace", keyRu: "Backspace", keyRuCaps: "Backspace", keyRuShiftCaps: "Backspace", keyRuShift: "Backspace", keyEn: "Backspace", keyEnCaps: "Backspace", keyEnShift: "Backspace", keyEnShiftCaps: "Backspace", type: "backspaceKeys" },
-    { code: "Tab", keyRu: "Tab", keyRuCaps: "Tab", keyRuShift: "Tab", keyRuShiftCaps: "Tab",  keyEn: "Tab", keyEnCaps: "Tab", keyEnShift: "Tab", keyEnShiftCaps: "Tab", type: "tabKey" },
-    { code: "KeyQ", keyRu: "й", keyRuCaps: "Й", keyRuShift: "Й", keyRuShiftCaps: "й", keyEn: "q", keyEnCaps: "Q", keyEnShift: "Q", keyEnShiftCaps: "q", type: "typinKeys" },
-    { code: "KeyW", keyRu: "ц", keyRuCaps: "Ц", keyRuShift: "Ц", keyRuShiftCaps: "ц", keyEn: "w", keyEnCaps: "W", keyEnShift: "W", keyEnShiftCaps: "w", type: "typinKeys" },
-    { code: "KeyE", keyRu: "у", keyRuCaps: "У", keyRuShift: "У", keyRuShiftCaps: "у", keyEn: "e", keyEnCaps: "E", keyEnShift: "E", keyEnShiftCaps: "e", type: "typinKeys"},
-    { code: "KeyR", keyRu: "к", keyRuCaps: "К", keyRuShift: "К", keyRuShiftCaps: "к", keyEn: "r", keyEnCaps: "R", keyEnShift: "R", keyEnShiftCaps: "r", type: "typinKeys" },
-    { code: "KeyT", keyRu: "е", keyRuCaps: "Е", keyRuShift: "Е", keyRuShiftCaps: "е", keyEn: "t", keyEnCaps: "T", keyEnShift: "T", keyEnShiftCaps: "t", type: "typinKeys" },
-    { code: "KeyY", keyRu: "н", keyRuCaps: "Н", keyRuShift: "Н", keyRuShiftCaps: "н", keyEn: "y", keyEnCaps: "Y", keyEnShift: "Y", keyEnShiftCaps: "y", type: "typinKeys" },
-    { code: "KeyU", keyRu: "г", keyRuCaps: "Г", keyRuShift: "Г", keyRuShiftCaps: "г", keyEn: "u", keyEnCaps: "U", keyEnShift: "U", keyEnShiftCaps: "u", type: "typinKeys" },
-    { code: "KeyI", keyRu: "ш", keyRuCaps: "Ш", keyRuShift: "Ш", keyRuShiftCaps: "ш", keyEn: "i", keyEnCaps: "I", keyEnShift: "I", keyEnShiftCaps: "i", type: "typinKeys" },
-    { code: "KeyO", keyRu: "щ", keyRuCaps: "Щ", keyRuShift: "Щ", keyRuShiftCaps: "щ", keyEn: "o", keyEnCaps: "O", keyEnShift: "O", keyEnShiftCaps: "o", type: "typinKeys" },
-    { code: "KeyP", keyRu: "з", keyRuCaps: "З", keyRuShift: "З", keyRuShiftCaps: "з", keyEn: "p", keyEnCaps: "P", keyEnShift: "P", keyEnShiftCaps: "p", type: "typinKeys" },
-    { code: "BracketLeft", keyRu: "х", keyRuCaps: "Х", keyRuShift: "Х", keyRuShiftCaps: "х", keyEn: "[", keyEnCaps: "[", keyEnShift: "{", keyEnShiftCaps: "{", type: "typinKeys"},
-    { code: "BracketRight", keyRu: "ъ", keyRuCaps: "Ъ", keyRuShift: "Ъ", keyRuShiftCaps: "ъ", keyEn: "]", keyEnCaps: "[", keyEnShift: "}", keyEnShiftCaps: "}", type: "typinKeys" },
-    { code: "Backslash", keyRu: "\\", keyRuCaps: "\\", keyRuShift: "\/", keyRuShiftCaps: "\/", keyEn: "\\", keyEnCaps: "\\", keyEnShift: "|", keyEnShiftCaps: "|", type: "typinKeys" },
-    { code: "Delete", keyRu: "Del", keyRuCaps: "Del", keyRuShift: "Del", keyRuShiftCaps: "Del", keyEn: "Del", keyEnCaps: "Del", keyEnShift: "Del", keyEnShiftCaps: "Del", type: "delKey" },
-    { code: "CapsLock", keyRu: "CapsLock", keyRuCaps: "CapsLock", keyRuShiftCaps: "CapsLock", keyRuShift: "CapsLock", keyEn: "CapsLock", keyEnCaps: "CapsLock", keyEnShift: "CapsLock", keyEnShiftCaps: "CapsLock", type: "capsLockKey" },
-    { code: "KeyA", keyRu: "ф", keyRuCaps: "Ф", keyRuShift: "Ф", keyRuShiftCaps: "ф", keyEn: "a", keyEnCaps: "A", keyEnShift: "A", keyEnShiftCaps: "a", type: "typinKeys" },
-    { code: "KeyS", keyRu: "ы", keyRuCaps: "Ы", keyRuShift: "Ы", keyRuShiftCaps: "ы", keyEn: "s", keyEnCaps: "S", keyEnShift: "S", keyEnShiftCaps: "s", type: "typinKeys" },
-    { code: "KeyD", keyRu: "в", keyRuCaps: "В", keyRuShift: "В", keyRuShiftCaps: "в", keyEn: "d", keyEnCaps: "D", keyEnShift: "D", keyEnShiftCaps: "d", type: "typinKeys" },
-    { code: "KeyF", keyRu: "а", keyRuCaps: "А", keyRuShift: "А", keyRuShiftCaps: "а", keyEn: "f", keyEnCaps: "F", keyEnShift: "F", keyEnShiftCaps: "f", type: "typinKeys" },
-    { code: "KeyG", keyRu: "п", keyRuCaps: "П", keyRuShift: "П", keyRuShiftCaps: "п", keyEn: "g", keyEnCaps: "G", keyEnShift: "G", keyEnShiftCaps: "g", type: "typinKeys" },
-    { code: "KeyH", keyRu: "р", keyRuCaps: "Р", keyRuShift: "Р", keyRuShiftCaps: "р", keyEn: "h", keyEnCaps: "H", keyEnShift: "H", keyEnShiftCaps: "h", type: "typinKeys" },
-    { code: "KeyJ", keyRu: "о", keyRuCaps: "О", keyRuShift: "О", keyRuShiftCaps: "о", keyEn: "j", keyEnCaps: "J", keyEnShift: "J", keyEnShiftCaps: "j", type: "typinKeys" },
-    { code: "KeyK", keyRu: "л", keyRuCaps: "Л", keyRuShift: "Л", keyRuShiftCaps: "л", keyEn: "k", keyEnCaps: "K", keyEnShift: "K", keyEnShiftCaps: "k", type: "typinKeys" },
-    { code: "KeyL", keyRu: "д", keyRuCaps: "Д", keyRuShift: "Д", keyRuShiftCaps: "д", keyEn: "l", keyEnCaps: "L", keyEnShift: "L", keyEnShiftCaps: "l", type: "typinKeys" },
-    { code: "Semicolon", keyRu: "ж", keyRuCaps: "Ж", keyRuShift: "Ж", keyRuShiftCaps: "ж", keyEn: ";", keyEnCaps: ";", keyEnShift: ":", keyEnShiftCaps: ":", type: "typinKeys" },
-    { code: "Quote", keyRu: "э", keyRuCaps: "Э", keyRuShift: "Э", keyRuShiftCaps: "э", keyEn: "'", keyEnCaps: "'", keyEnShift: "\"", keyEnShiftCaps: "\"", type: "typinKeys" },
-    { code: "Enter", keyRu: "Enter", keyRuCaps: "Enter", keyRuShift: "Enter", keyRuShiftCaps: "Enter", keyRuShift: "Enter", keyEn: "Enter", keyEnCaps: "Enter", keyEnShift: "Enter", keyEnShiftCaps: "Enter", type: "enterKey" },
-    { code: "ShiftLeft", keyRu: "Shift", keyRuCaps: "Shift", keyRuShift: "Shift", keyRuShiftCaps: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", keyEnShiftCaps: "Shift", type: "shiftKey" },
-    { code: "KeyZ", keyRu: "я", keyRuCaps: "Я", keyRuShift: "Я", keyRuShiftCaps: "я", keyEn: "z", keyEnCaps: "Z", keyEnShift: "Z", keyEnShiftCaps: "z", type: "typinKeys" },
-    { code: "KeyX", keyRu: "ч", keyRuCaps: "Ч", keyRuShift: "Ч", keyRuShiftCaps: "ч", keyEn: "x", keyEnCaps: "X", keyEnShift: "X", keyEnShiftCaps: "x", type: "typinKeys" },
-    { code: "KeyC", keyRu: "с", keyRuCaps: "С", keyRuShift: "С", keyRuShiftCaps: "с", keyEn: "c", keyEnCaps: "C", keyEnShift: "C", keyEnShiftCaps: "c", type: "typinKeys" },
-    { code: "KeyV", keyRu: "м", keyRuCaps: "М", keyRuShift: "М", keyRuShiftCaps: "м", keyEn: "v", keyEnCaps: "V", keyEnShift: "V", keyEnShiftCaps: "v", type: "typinKeys" },
-    { code: "KeyB", keyRu: "и", keyRuCaps: "И", keyRuShift: "И", keyRuShiftCaps: "и", keyEn: "b", keyEnCaps: "B", keyEnShift: "B", keyEnShiftCaps: "b", type: "typinKeys" },
-    { code: "KeyN", keyRu: "т", keyRuCaps: "Т", keyRuShift: "Т", keyRuShiftCaps: "т", keyEn: "n", keyEnCaps: "N", keyEnShift: "N", keyEnShiftCaps: "n", type: "typinKeys" },
-    { code: "KeyM", keyRu: "ь", keyRuCaps: "Ь", keyRuShift: "Ь", keyRuShiftCaps: "ь", keyEn: "m", keyEnCaps: "M", keyEnShift: "M", keyEnShiftCaps: "m", type: "typinKeys" },
-    { code: "Comma", keyRu: "б", keyRuCaps: "Б", keyRuShift: "Б", keyRuShiftCaps: "б", keyEn: ",", keyEnCaps: ",", keyEnShift: "<", keyEnShiftCaps: "<", type: "typinKeys" },
-    { code: "Period", keyRu: "ю", keyRuCaps: "Ю", keyRuShift: "Ю", keyRuShiftCaps: "ю", keyEn: ".", keyEnCaps: ".", keyEnShift: ">", keyEnShiftCaps: ">", type: "typinKeys" },
-    { code: "Slash", keyRu: ".", keyRuCaps: ".", keyRuShift: ",", keyRuShiftCaps: ",", keyEn: "/", keyEnCaps: "/", keyEnShift: "?", keyEnShiftCaps: "?", type: "typinKeys" },
-    { code: "ArrowUp", keyRu: "▲", keyRuCaps: "▲", keyRuShift: "▲", keyRuShiftCaps: "▲", keyEn: "▲", keyEnCaps: "▲", keyEnShift: "▲", keyEnShiftCaps: "▲", type: "navigationKeys"},
-    { code: "ShiftRight", keyRu: "Shift", keyRuCaps: "Shift", keyRuShiftCaps: "Shift", keyRuShift: "Shift", keyEn: "Shift", keyEnCaps: "Shift", keyEnShift: "Shift", keyEnShiftCaps: "Shift", type: "shiftRightKey" },
-    { code: "ControlLeft", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShiftCaps: "Ctrl", keyRuShift: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "ctrlLeftKey" },
-    { code: "OSLeft", keyRu: "Win", keyRuCaps: "Win", keyRuShift: "Win", keyRuShiftCaps: "Win", keyEn: "Win", keyEnCaps: "Win", keyEnShift: "Win", keyEnShiftCaps: "Win", type: "controlKeys" },
-    { code: "AltLeft", keyRu: "Alt", keyRuCaps: "Alt", keyRuShift: "Alt", keyRuShiftCaps: "Alt", keyEn: "Alt", keyEnCaps: "Alt", keyEnShift: "Alt", keyEnShiftCaps: "Alt", type: "controlKeys" },
-    { code: "Space", keyRu: " ", keyRuCaps: " ", keyRuShift: " ", keyRuShiftCaps: " ", keyEn: " ", keyEnCaps: " ", keyEnShift: " ", keyEnShiftCaps: " ", type: "spaceKey" },
-    { code: "AltRight", keyRu: "Alt", keyRuCaps: "Alt", keyRuShift: "Alt", keyRuShiftCaps: "Alt", keyEn: "Alt", keyEnCaps: "Alt", keyEnShift: "Alt", keyEnShiftCaps: "Alt", type: "controlKeys" },
-    { code: "ArrowLeft", keyRu: "◄", keyRuCaps: "◄", keyRuShift: "◄", keyRuShiftCaps: "◄", keyEn: "◄", keyEnCaps: "◄", keyEnShift: "◄", keyEnShiftCaps: "◄", type: "navigationKeys" },
-    { code: "ArrowDown", keyRu: "▼", keyRuCaps: "▼", keyRuShift: "▼", keyRuShiftCaps: "▼", keyEn: "▼", keyEnCaps: "▼", keyEnShift: "▼", keyEnShiftCaps: "▼", type: "navigationKeys" },
-    { code: "ArrowRight", keyRu: "►", keyRuCaps: "►", keyRuShift: "►", keyRuShiftCaps: "►", keyEn: "►", keyEnCaps: "►", keyEnShift: "►", keyEnShiftCaps: "►", type: "navigationKeys" },
-    { code: "ControlRight", keyRu: "Ctrl", keyRuCaps: "Ctrl", keyRuShift: "Ctrl", keyRuShiftCaps: "Ctrl", keyEn: "Ctrl", keyEnCaps: "Ctrl", keyEnShift: "Ctrl", keyEnShiftCaps: "Ctrl", type: "ctrlRightKey" }
-];
+    {
+      code: 'Backquote', keyRu: 'ё', keyRuCaps: 'Ё', keyRuShift: 'Ё', keyRuShiftCaps: 'ё', keyEn: '`', keyEnCaps: '`', keyEnShift: '~', keyEnShiftCaps: '~', type: 'typinKeys',
+    },
+    {
+      code: 'Digit1', keyRu: '1', keyRuCaps: '1', keyRuShift: '!', keyRuShiftCaps: '!', keyEn: '1', keyEnCaps: '1', keyEnShift: '!', keyEnShiftCaps: '!', type: 'typinKeys',
+    },
+    {
+      code: 'Digit2', keyRu: '2', keyRuCaps: '2', keyRuShift: '\'', keyRuShiftCaps: '\'', keyEn: '2', keyEnCaps: '2', keyEnShift: '@', keyEnShiftCaps: '@', type: 'typinKeys',
+    },
+    {
+      code: 'Digit3', keyRu: '3', keyRuCaps: '3', keyRuShift: '№', keyRuShiftCaps: '№', keyEn: '3', keyEnCaps: '3', keyEnShift: '#', keyEnShiftCaps: '#', type: 'typinKeys',
+    },
+    {
+      code: 'Digit4', keyRu: '4', keyRuCaps: '4', keyRuShift: ';', keyRuShiftCaps: ';', keyEn: '4', keyEnCaps: '4', keyEnShift: '$', keyEnShiftCaps: '$', type: 'typinKeys',
+    },
+    {
+      code: 'Digit5', keyRu: '5', keyRuCaps: '5', keyRuShift: '%', keyRuShiftCaps: '%', keyEn: '5', keyEnCaps: '5', keyEnShift: '%', keyEnShiftCaps: '%', type: 'typinKeys',
+    },
+    {
+      code: 'Digit6', keyRu: '6', keyRuCaps: '6', keyRuShift: ':', keyRuShiftCaps: ':', keyEn: '6', keyEnCaps: '6', keyEnShift: '^', keyEnShiftCaps: '^', type: 'typinKeys',
+    },
+    {
+      code: 'Digit7', keyRu: '7', keyRuCaps: '7', keyRuShift: '?', keyRuShiftCaps: '?', keyEn: '7', keyEnCaps: '7', keyEnShift: '&', keyEnShiftCaps: '&', type: 'typinKeys',
+    },
+    {
+      code: 'Digit8', keyRu: '8', keyRuCaps: '8', keyRuShift: '*', keyRuShiftCaps: '*', keyEn: '8', keyEnCaps: '8', keyEnShift: '*', keyEnShiftCaps: '*', type: 'typinKeys',
+    },
+    {
+      code: 'Digit9', keyRu: '9', keyRuCaps: '9', keyRuShift: '(', keyRuShiftCaps: '(', keyEn: '9', keyEnCaps: '9', keyEnShift: '(', keyEnShiftCaps: '(', type: 'typinKeys',
+    },
+    {
+      code: 'Digit0', keyRu: '0', keyRuCaps: '0', keyRuShift: ')', keyRuShiftCaps: ')', keyEn: '0', keyEnCaps: '0', keyEnShift: ')', keyEnShiftCaps: ')', type: 'typinKeys',
+    },
+    {
+      code: 'Minus', keyRu: '-', keyRuCaps: '-', keyRuShift: '_', keyRuShiftCaps: '_', keyEn: '-', keyEnCaps: '-', keyEnShift: '_', keyEnShiftCaps: '_', type: 'typinKeys',
+    },
+    {
+      code: 'Equal', keyRu: '=', keyRuCaps: '=', keyRuShift: '+', keyRuShiftCaps: '+', keyEn: '=', keyEnCaps: '=', keyEnShift: '+', keyEnShiftCaps: '+', type: 'typinKeys',
+    },
+    {
+      code: 'Backspace', keyRu: 'Backspace', keyRuCaps: 'Backspace', keyRuShiftCaps: 'Backspace', keyRuShift: 'Backspace', keyEn: 'Backspace', keyEnCaps: 'Backspace', keyEnShift: 'Backspace', keyEnShiftCaps: 'Backspace', type: 'backspaceKeys',
+    },
+    {
+      code: 'Tab', keyRu: 'Tab', keyRuCaps: 'Tab', keyRuShift: 'Tab', keyRuShiftCaps: 'Tab', keyEn: 'Tab', keyEnCaps: 'Tab', keyEnShift: 'Tab', keyEnShiftCaps: 'Tab', type: 'tabKey',
+    },
+    {
+      code: 'KeyQ', keyRu: 'й', keyRuCaps: 'Й', keyRuShift: 'Й', keyRuShiftCaps: 'й', keyEn: 'q', keyEnCaps: 'Q', keyEnShift: 'Q', keyEnShiftCaps: 'q', type: 'typinKeys',
+    },
+    {
+      code: 'KeyW', keyRu: 'ц', keyRuCaps: 'Ц', keyRuShift: 'Ц', keyRuShiftCaps: 'ц', keyEn: 'w', keyEnCaps: 'W', keyEnShift: 'W', keyEnShiftCaps: 'w', type: 'typinKeys',
+    },
+    {
+      code: 'KeyE', keyRu: 'у', keyRuCaps: 'У', keyRuShift: 'У', keyRuShiftCaps: 'у', keyEn: 'e', keyEnCaps: 'E', keyEnShift: 'E', keyEnShiftCaps: 'e', type: 'typinKeys',
+    },
+    {
+      code: 'KeyR', keyRu: 'к', keyRuCaps: 'К', keyRuShift: 'К', keyRuShiftCaps: 'к', keyEn: 'r', keyEnCaps: 'R', keyEnShift: 'R', keyEnShiftCaps: 'r', type: 'typinKeys',
+    },
+    {
+      code: 'KeyT', keyRu: 'е', keyRuCaps: 'Е', keyRuShift: 'Е', keyRuShiftCaps: 'е', keyEn: 't', keyEnCaps: 'T', keyEnShift: 'T', keyEnShiftCaps: 't', type: 'typinKeys',
+    },
+    {
+      code: 'KeyY', keyRu: 'н', keyRuCaps: 'Н', keyRuShift: 'Н', keyRuShiftCaps: 'н', keyEn: 'y', keyEnCaps: 'Y', keyEnShift: 'Y', keyEnShiftCaps: 'y', type: 'typinKeys',
+    },
+    {
+      code: 'KeyU', keyRu: 'г', keyRuCaps: 'Г', keyRuShift: 'Г', keyRuShiftCaps: 'г', keyEn: 'u', keyEnCaps: 'U', keyEnShift: 'U', keyEnShiftCaps: 'u', type: 'typinKeys',
+    },
+    {
+      code: 'KeyI', keyRu: 'ш', keyRuCaps: 'Ш', keyRuShift: 'Ш', keyRuShiftCaps: 'ш', keyEn: 'i', keyEnCaps: 'I', keyEnShift: 'I', keyEnShiftCaps: 'i', type: 'typinKeys',
+    },
+    {
+      code: 'KeyO', keyRu: 'щ', keyRuCaps: 'Щ', keyRuShift: 'Щ', keyRuShiftCaps: 'щ', keyEn: 'o', keyEnCaps: 'O', keyEnShift: 'O', keyEnShiftCaps: 'o', type: 'typinKeys',
+    },
+    {
+      code: 'KeyP', keyRu: 'з', keyRuCaps: 'З', keyRuShift: 'З', keyRuShiftCaps: 'з', keyEn: 'p', keyEnCaps: 'P', keyEnShift: 'P', keyEnShiftCaps: 'p', type: 'typinKeys',
+    },
+    {
+      code: 'BracketLeft', keyRu: 'х', keyRuCaps: 'Х', keyRuShift: 'Х', keyRuShiftCaps: 'х', keyEn: '[', keyEnCaps: '[', keyEnShift: '{', keyEnShiftCaps: '{', type: 'typinKeys',
+    },
+    {
+      code: 'BracketRight', keyRu: 'ъ', keyRuCaps: 'Ъ', keyRuShift: 'Ъ', keyRuShiftCaps: 'ъ', keyEn: ']', keyEnCaps: '[', keyEnShift: '}', keyEnShiftCaps: '}', type: 'typinKeys',
+    },
+    {
+      code: 'Backslash', keyRu: '\\', keyRuCaps: '\\', keyRuShift: '/', keyRuShiftCaps: '/', keyEn: '\\', keyEnCaps: '\\', keyEnShift: '|', keyEnShiftCaps: '|', type: 'typinKeys',
+    },
+    {
+      code: 'Delete', keyRu: 'Del', keyRuCaps: 'Del', keyRuShift: 'Del', keyRuShiftCaps: 'Del', keyEn: 'Del', keyEnCaps: 'Del', keyEnShift: 'Del', keyEnShiftCaps: 'Del', type: 'delKey',
+    },
+    {
+      code: 'CapsLock', keyRu: 'CapsLock', keyRuCaps: 'CapsLock', keyRuShiftCaps: 'CapsLock', keyRuShift: 'CapsLock', keyEn: 'CapsLock', keyEnCaps: 'CapsLock', keyEnShift: 'CapsLock', keyEnShiftCaps: 'CapsLock', type: 'capsLockKey',
+    },
+    {
+      code: 'KeyA', keyRu: 'ф', keyRuCaps: 'Ф', keyRuShift: 'Ф', keyRuShiftCaps: 'ф', keyEn: 'a', keyEnCaps: 'A', keyEnShift: 'A', keyEnShiftCaps: 'a', type: 'typinKeys',
+    },
+    {
+      code: 'KeyS', keyRu: 'ы', keyRuCaps: 'Ы', keyRuShift: 'Ы', keyRuShiftCaps: 'ы', keyEn: 's', keyEnCaps: 'S', keyEnShift: 'S', keyEnShiftCaps: 's', type: 'typinKeys',
+    },
+    {
+      code: 'KeyD', keyRu: 'в', keyRuCaps: 'В', keyRuShift: 'В', keyRuShiftCaps: 'в', keyEn: 'd', keyEnCaps: 'D', keyEnShift: 'D', keyEnShiftCaps: 'd', type: 'typinKeys',
+    },
+    {
+      code: 'KeyF', keyRu: 'а', keyRuCaps: 'А', keyRuShift: 'А', keyRuShiftCaps: 'а', keyEn: 'f', keyEnCaps: 'F', keyEnShift: 'F', keyEnShiftCaps: 'f', type: 'typinKeys',
+    },
+    {
+      code: 'KeyG', keyRu: 'п', keyRuCaps: 'П', keyRuShift: 'П', keyRuShiftCaps: 'п', keyEn: 'g', keyEnCaps: 'G', keyEnShift: 'G', keyEnShiftCaps: 'g', type: 'typinKeys',
+    },
+    {
+      code: 'KeyH', keyRu: 'р', keyRuCaps: 'Р', keyRuShift: 'Р', keyRuShiftCaps: 'р', keyEn: 'h', keyEnCaps: 'H', keyEnShift: 'H', keyEnShiftCaps: 'h', type: 'typinKeys',
+    },
+    {
+      code: 'KeyJ', keyRu: 'о', keyRuCaps: 'О', keyRuShift: 'О', keyRuShiftCaps: 'о', keyEn: 'j', keyEnCaps: 'J', keyEnShift: 'J', keyEnShiftCaps: 'j', type: 'typinKeys',
+    },
+    {
+      code: 'KeyK', keyRu: 'л', keyRuCaps: 'Л', keyRuShift: 'Л', keyRuShiftCaps: 'л', keyEn: 'k', keyEnCaps: 'K', keyEnShift: 'K', keyEnShiftCaps: 'k', type: 'typinKeys',
+    },
+    {
+      code: 'KeyL', keyRu: 'д', keyRuCaps: 'Д', keyRuShift: 'Д', keyRuShiftCaps: 'д', keyEn: 'l', keyEnCaps: 'L', keyEnShift: 'L', keyEnShiftCaps: 'l', type: 'typinKeys',
+    },
+    {
+      code: 'Semicolon', keyRu: 'ж', keyRuCaps: 'Ж', keyRuShift: 'Ж', keyRuShiftCaps: 'ж', keyEn: ';', keyEnCaps: ';', keyEnShift: ':', keyEnShiftCaps: ':', type: 'typinKeys',
+    },
+    {
+      code: 'Quote', keyRu: 'э', keyRuCaps: 'Э', keyRuShift: 'Э', keyRuShiftCaps: 'э', keyEn: '\'', keyEnCaps: '"', keyEnShift: '"', keyEnShiftCaps: '"', type: 'typinKeys',
+    },
+    {
+      code: 'Enter', keyRu: 'Enter', keyRuCaps: 'Enter', keyRuShift: 'Enter', keyRuShiftCaps: 'Enter', keyEn: 'Enter', keyEnCaps: 'Enter', keyEnShift: 'Enter', keyEnShiftCaps: 'Enter', type: 'enterKey',
+    },
+    {
+      code: 'ShiftLeft', keyRu: 'Shift', keyRuCaps: 'Shift', keyRuShift: 'Shift', keyRuShiftCaps: 'Shift', keyEn: 'Shift', keyEnCaps: 'Shift', keyEnShift: 'Shift', keyEnShiftCaps: 'Shift', type: 'shiftKey',
+    },
+    {
+      code: 'KeyZ', keyRu: 'я', keyRuCaps: 'Я', keyRuShift: 'Я', keyRuShiftCaps: 'я', keyEn: 'z', keyEnCaps: 'Z', keyEnShift: 'Z', keyEnShiftCaps: 'z', type: 'typinKeys',
+    },
+    {
+      code: 'KeyX', keyRu: 'ч', keyRuCaps: 'Ч', keyRuShift: 'Ч', keyRuShiftCaps: 'ч', keyEn: 'x', keyEnCaps: 'X', keyEnShift: 'X', keyEnShiftCaps: 'x', type: 'typinKeys',
+    },
+    {
+      code: 'KeyC', keyRu: 'с', keyRuCaps: 'С', keyRuShift: 'С', keyRuShiftCaps: 'с', keyEn: 'c', keyEnCaps: 'C', keyEnShift: 'C', keyEnShiftCaps: 'c', type: 'typinKeys',
+    },
+    {
+      code: 'KeyV', keyRu: 'м', keyRuCaps: 'М', keyRuShift: 'М', keyRuShiftCaps: 'м', keyEn: 'v', keyEnCaps: 'V', keyEnShift: 'V', keyEnShiftCaps: 'v', type: 'typinKeys',
+    },
+    {
+      code: 'KeyB', keyRu: 'и', keyRuCaps: 'И', keyRuShift: 'И', keyRuShiftCaps: 'и', keyEn: 'b', keyEnCaps: 'B', keyEnShift: 'B', keyEnShiftCaps: 'b', type: 'typinKeys',
+    },
+    {
+      code: 'KeyN', keyRu: 'т', keyRuCaps: 'Т', keyRuShift: 'Т', keyRuShiftCaps: 'т', keyEn: 'n', keyEnCaps: 'N', keyEnShift: 'N', keyEnShiftCaps: 'n', type: 'typinKeys',
+    },
+    {
+      code: 'KeyM', keyRu: 'ь', keyRuCaps: 'Ь', keyRuShift: 'Ь', keyRuShiftCaps: 'ь', keyEn: 'm', keyEnCaps: 'M', keyEnShift: 'M', keyEnShiftCaps: 'm', type: 'typinKeys',
+    },
+    {
+      code: 'Comma', keyRu: 'б', keyRuCaps: 'Б', keyRuShift: 'Б', keyRuShiftCaps: 'б', keyEn: ',', keyEnCaps: ',', keyEnShift: '<', keyEnShiftCaps: '<', type: 'typinKeys',
+    },
+    {
+      code: 'Period', keyRu: 'ю', keyRuCaps: 'Ю', keyRuShift: 'Ю', keyRuShiftCaps: 'ю', keyEn: '.', keyEnCaps: '.', keyEnShift: '>', keyEnShiftCaps: '>', type: 'typinKeys',
+    },
+    {
+      code: 'Slash', keyRu: '.', keyRuCaps: '.', keyRuShift: ',', keyRuShiftCaps: ',', keyEn: '/', keyEnCaps: '/', keyEnShift: '?', keyEnShiftCaps: '?', type: 'typinKeys',
+    },
+    {
+      code: 'ArrowUp', keyRu: '▲', keyRuCaps: '▲', keyRuShift: '▲', keyRuShiftCaps: '▲', keyEn: '▲', keyEnCaps: '▲', keyEnShift: '▲', keyEnShiftCaps: '▲', type: 'navigationKeys',
+    },
+    {
+      code: 'ShiftRight', keyRu: 'Shift', keyRuCaps: 'Shift', keyRuShiftCaps: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnCaps: 'Shift', keyEnShift: 'Shift', keyEnShiftCaps: 'Shift', type: 'shiftRightKey',
+    },
+    {
+      code: 'ControlLeft', keyRu: 'Ctrl', keyRuCaps: 'Ctrl', keyRuShiftCaps: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnCaps: 'Ctrl', keyEnShift: 'Ctrl', keyEnShiftCaps: 'Ctrl', type: 'ctrlLeftKey',
+    },
+    {
+      code: 'OSLeft', keyRu: 'Win', keyRuCaps: 'Win', keyRuShift: 'Win', keyRuShiftCaps: 'Win', keyEn: 'Win', keyEnCaps: 'Win', keyEnShift: 'Win', keyEnShiftCaps: 'Win', type: 'controlKeys',
+    },
+    {
+      code: 'AltLeft', keyRu: 'Alt', keyRuCaps: 'Alt', keyRuShift: 'Alt', keyRuShiftCaps: 'Alt', keyEn: 'Alt', keyEnCaps: 'Alt', keyEnShift: 'Alt', keyEnShiftCaps: 'Alt', type: 'controlKeys',
+    },
+    {
+      code: 'Space', keyRu: ' ', keyRuCaps: ' ', keyRuShift: ' ', keyRuShiftCaps: ' ', keyEn: ' ', keyEnCaps: ' ', keyEnShift: ' ', keyEnShiftCaps: ' ', type: 'spaceKey',
+    },
+    {
+      code: 'AltRight', keyRu: 'Alt', keyRuCaps: 'Alt', keyRuShift: 'Alt', keyRuShiftCaps: 'Alt', keyEn: 'Alt', keyEnCaps: 'Alt', keyEnShift: 'Alt', keyEnShiftCaps: 'Alt', type: 'controlKeys',
+    },
+    {
+      code: 'ArrowLeft', keyRu: '◄', keyRuCaps: '◄', keyRuShift: '◄', keyRuShiftCaps: '◄', keyEn: '◄', keyEnCaps: '◄', keyEnShift: '◄', keyEnShiftCaps: '◄', type: 'navigationKeys',
+    },
+    {
+      code: 'ArrowDown', keyRu: '▼', keyRuCaps: '▼', keyRuShift: '▼', keyRuShiftCaps: '▼', keyEn: '▼', keyEnCaps: '▼', keyEnShift: '▼', keyEnShiftCaps: '▼', type: 'navigationKeys',
+    },
+    {
+      code: 'ArrowRight', keyRu: '►', keyRuCaps: '►', keyRuShift: '►', keyRuShiftCaps: '►', keyEn: '►', keyEnCaps: '►', keyEnShift: '►', keyEnShiftCaps: '►', type: 'navigationKeys',
+    },
+    {
+      code: 'ControlRight', keyRu: 'Ctrl', keyRuCaps: 'Ctrl', keyRuShift: 'Ctrl', keyRuShiftCaps: 'Ctrl', keyEn: 'Ctrl', keyEnCaps: 'Ctrl', keyEnShift: 'Ctrl', keyEnShiftCaps: 'Ctrl', type: 'ctrlRightKey',
+    },
+  ];
 
 if (!localStorage.getItem('inputLanguage')) {
     localStorage.setItem('inputLanguage', 'ru');
