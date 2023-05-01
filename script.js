@@ -273,10 +273,15 @@ KEYBOARD.addEventListener("click", (event) => {
                 break;
 
             case "backspaceKeys":
-                textArr.splice(startSelected-1, 1);
-                text=textArr.join('');
-                INPUT_FIELD.value=text;
-                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+                if (startSelected!==0) {
+                    textArr.splice(startSelected-1, 1);
+                    text=textArr.join('');
+                    INPUT_FIELD.value=text;
+                    INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+                }
+                else {
+                    INPUT_FIELD.focus();
+                }
                 break;
         }
     }
@@ -360,10 +365,15 @@ document.addEventListener("keydown", (event) => {
             break;
 
         case "backspaceKeys":
-            textArr.splice(startSelected-1, 1);
-            text=textArr.join('');
-            INPUT_FIELD.value=text;
-            INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+            if (startSelected!==0) {
+                textArr.splice(startSelected-1, 1);
+                text=textArr.join('');
+                INPUT_FIELD.value=text;
+                INPUT_FIELD.selectionStart = INPUT_FIELD.selectionEnd = startSelected-1;
+            }
+            else {
+                INPUT_FIELD.focus();
+            }
             break;
 
         case "shiftKey":
