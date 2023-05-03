@@ -6,7 +6,7 @@ const KEYS = [
     code: 'Digit1', keyRu: '1', keyRuCaps: '1', keyRuShift: '!', keyRuShiftCaps: '!', keyEn: '1', keyEnCaps: '1', keyEnShift: '!', keyEnShiftCaps: '!', type: 'typinKeys',
   },
   {
-    code: 'Digit2', keyRu: '2', keyRuCaps: '2', keyRuShift: '\'', keyRuShiftCaps: '\'', keyEn: '2', keyEnCaps: '2', keyEnShift: '@', keyEnShiftCaps: '@', type: 'typinKeys',
+    code: 'Digit2', keyRu: '2', keyRuCaps: '2', keyRuShift: '"', keyRuShiftCaps: '"', keyEn: '2', keyEnCaps: '2', keyEnShift: '@', keyEnShiftCaps: '@', type: 'typinKeys',
   },
   {
     code: 'Digit3', keyRu: '3', keyRuCaps: '3', keyRuShift: '№', keyRuShiftCaps: '№', keyEn: '3', keyEnCaps: '3', keyEnShift: '#', keyEnShiftCaps: '#', type: 'typinKeys',
@@ -231,6 +231,8 @@ const INPUT_FIELD = document.querySelector('#text');
 const KEYBOARD = document.querySelector('#keyboard');
 const spanlowerCase = document.querySelectorAll('.keylowerCase');
 const SPAN_CAPS = document.querySelectorAll('.capsLock');
+const SPAN_SHIFT = document.querySelectorAll('.shift');
+const SPAN_SHIFT_CAPS = document.querySelectorAll('.shift-capsLock');
 const SPAN_RU = document.querySelectorAll('#spanRu');
 const SPAN_EN = document.querySelectorAll('#spanEn');
 let text = '';
@@ -246,12 +248,12 @@ SHIFT_LEFT.addEventListener('mousedown', (event) => {
     for (let i = 0; i < spanlowerCase.length; i += 1) {
       spanlowerCase[i].classList.add('hidden');
     }
-    for (let i = 0; i < SPAN_CAPS.length; i += 1) {
-      SPAN_CAPS[i].classList.remove('hidden');
+    for (let i = 0; i < SPAN_SHIFT.length; i += 1) {
+      SPAN_SHIFT[i].classList.remove('hidden');
     }
   } else {
-    for (let i = 0; i < spanlowerCase.length; i += 1) {
-      spanlowerCase[i].classList.remove('hidden');
+    for (let i = 0; i < SPAN_SHIFT_CAPS.length; i += 1) {
+      SPAN_SHIFT_CAPS[i].classList.remove('hidden');
     }
     for (let i = 0; i < SPAN_CAPS.length; i += 1) {
       SPAN_CAPS[i].classList.add('hidden');
@@ -266,12 +268,12 @@ SHIFT_RIGHT.addEventListener('mousedown', (event) => {
     for (let i = 0; i < spanlowerCase.length; i += 1) {
       spanlowerCase[i].classList.add('hidden');
     }
-    for (let i = 0; i < SPAN_CAPS.length; i += 1) {
-      SPAN_CAPS[i].classList.remove('hidden');
+    for (let i = 0; i < SPAN_SHIFT.length; i += 1) {
+      SPAN_SHIFT[i].classList.remove('hidden');
     }
   } else {
-    for (let i = 0; i < spanlowerCase.length; i += 1) {
-      spanlowerCase[i].classList.remove('hidden');
+    for (let i = 0; i < SPAN_SHIFT_CAPS.length; i += 1) {
+      SPAN_SHIFT_CAPS[i].classList.remove('hidden');
     }
     for (let i = 0; i < SPAN_CAPS.length; i += 1) {
       SPAN_CAPS[i].classList.add('hidden');
@@ -286,12 +288,12 @@ SHIFT_LEFT.addEventListener('mouseup', (event) => {
     for (let i = 0; i < spanlowerCase.length; i += 1) {
       spanlowerCase[i].classList.remove('hidden');
     }
-    for (let i = 0; i < SPAN_CAPS.length; i += 1) {
-      SPAN_CAPS[i].classList.add('hidden');
+    for (let i = 0; i < SPAN_SHIFT.length; i += 1) {
+      SPAN_SHIFT[i].classList.add('hidden');
     }
   } else {
-    for (let i = 0; i < spanlowerCase.length; i += 1) {
-      spanlowerCase[i].classList.add('hidden');
+    for (let i = 0; i < SPAN_SHIFT_CAPS.length; i += 1) {
+      SPAN_SHIFT_CAPS[i].classList.add('hidden');
     }
     for (let i = 0; i < SPAN_CAPS.length; i += 1) {
       SPAN_CAPS[i].classList.remove('hidden');
@@ -306,12 +308,12 @@ SHIFT_RIGHT.addEventListener('mouseup', (event) => {
     for (let i = 0; i < spanlowerCase.length; i += 1) {
       spanlowerCase[i].classList.remove('hidden');
     }
-    for (let i = 0; i < SPAN_CAPS.length; i += 1) {
-      SPAN_CAPS[i].classList.add('hidden');
+    for (let i = 0; i < SPAN_SHIFT.length; i += 1) {
+      SPAN_SHIFT[i].classList.add('hidden');
     }
   } else {
-    for (let i = 0; i < spanlowerCase.length; i += 1) {
-      spanlowerCase[i].classList.add('hidden');
+    for (let i = 0; i < SPAN_SHIFT_CAPS.length; i += 1) {
+      SPAN_SHIFT_CAPS[i].classList.add('hidden');
     }
     for (let i = 0; i < SPAN_CAPS.length; i += 1) {
       SPAN_CAPS[i].classList.remove('hidden');
