@@ -1,0 +1,140 @@
+.hidden {
+    display: none;
+}
+
+.container {
+    width: max-content;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container__text {
+    width: 735px;
+    height: 180px;
+    font-size: 20px;
+}
+
+.container__keyboard {
+    width: 730px;
+    margin: 25px 0;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid #000000;
+    border-radius: 5px;    
+    background: #5c5b5b;
+}
+
+.key {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    box-shadow:
+        0 1px rgba(255,255,255,.2) inset,
+        0 3px 5px rgba(0,1,6,0.5),
+        0 0 1px 1px rgba(0,1,6,0.2);
+    font-weight: 500;
+    color: whitesmoke;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.key:active {
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+    box-shadow:
+        0 0 1px rgba(0,0,0,0.5) inset,
+        0 2px 3px rgba(0,0,0,0.5) inset,
+        0 1px 1px rgba(255,255,255,0.1);
+}
+
+.key:hover {
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+}
+
+.typinKeys,
+.spaceKey {
+    background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+}
+
+.controlKeys,
+.tabKey,
+.delKey,
+.backspaceKeys,
+.navigationKeys,
+.capsLockKey,
+.enterKey,
+.shiftKey,
+.shiftRightKey,
+.ctrlRightKey,
+.ctrlLeftKey {
+    background: #302e2e;
+}
+
+.backspaceKeys,
+.enterKey,
+.shiftRightKey,
+.ctrlRightKey {    
+    margin: 0 0 6px 0;
+}
+
+.typinKeys,
+.tabKey,
+.navigationKeys,
+.capsLockKey,
+.shiftKey,
+.controlKeys,
+.ctrlLeftKey,
+.spaceKey {
+    margin: 0 6px 6px 0;
+}
+
+
+.backspaceKeys {
+    width: 102px;
+}
+
+.tabKey {
+    width: 55px;
+}
+
+.typinKeys,
+.navigationKeys,
+.controlKeys,
+.delKey,
+.ctrlLeftKey  {
+    width: 40px;
+}
+
+.ctrlRightKey{
+    width: 48px;
+}
+
+.capsLockKey,
+.shiftKey,
+.enterKey,
+.shiftRightKey {
+    width: 96px;
+}
+
+.spaceKey {
+    width: 336px;
+}
+
+.activeCaps {
+    background: red;
+}
+
+.active {
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+    box-shadow:
+        0 0 1px rgba(0,0,0,0.5) inset,
+        0 2px 3px rgba(0,0,0,0.5) inset,
+        0 1px 1px rgba(255,255,255,0.1);
+}
+
+.container__description {
+    font-size: 20px;
+}
